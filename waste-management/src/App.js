@@ -21,7 +21,7 @@ const App=()=> {
 )
   return (
     <div className="container">
-      <Input/>
+      <Input />
       <Header/> 
       
       <Tasks tasks={tasks}/>        
