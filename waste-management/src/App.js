@@ -1,5 +1,6 @@
 import Tasks from "./components/Tasks"
 import Header from "./components/Header"
+import Input from "./components/Input"
 import {useState} from "react"
 const App=()=> {  
   const [tasks, setTask] = useState(
@@ -20,7 +21,9 @@ const App=()=> {
 )
   return (
     <div className="container">
+      <Input/>
       <Header/> 
+      
       <Tasks tasks={tasks}/>        
     </div>
   );

@@ -1,13 +1,13 @@
 import Button from "./Button"
 
 
-const Header = ({title}) => { 
+const Header = () => { 
     const onClick=()=>{
         console.log("clicked")
     }   
     return (
         <header className="header">
-            <h1 >{title}</h1>            
+                        
              <Button color="green" text="Log In" onClick={onClick}/>
              <Button color="blue" text="sign up"/>             
         </header>
@@ -15,9 +15,7 @@ const Header = ({title}) => {
     )
 }
 
-Header.defaultProps={
-    title: "Waste Management System",
-}
+
 
 
 
