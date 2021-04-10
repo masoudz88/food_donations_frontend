@@ -10,7 +10,7 @@ const App = () => {
       <Layout>
         <Header>Header</Header>
         <Content>
-          <Space direction="vertical">
+          <Space direction="vertical" className="mainpage">
             <Input.Password placeholder="input password" />
             <Input.Password
               placeholder="input password"
