@@ -1,32 +1,31 @@
-import Tasks from "./components/Tasks"
-import Header from "./components/Header"
-import Input from "./components/Input"
-import {useState} from "react"
-const App=()=> {  
-  const [tasks, setTask] = useState(
-    [
-        {
-            id:1,
-            text:"hello",
-        },
-        {
-            id:2,
-            text:"man",
-        },
-        {
-            id:3,
-            text:"there",
-        },
-    ]
-)
+import { Input, Space } from "antd";
+import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+import { Button } from "antd";
+import { Layout } from "antd";
+const { Header, Footer, Content } = Layout;
+
+const App = () => {
   return (
     <div className="container">
-      <Input />
-      <Header/> 
-      
-      <Tasks tasks={tasks}/>        
+      <Layout>
+        <Header>Header</Header>
+        <Content>
+          <Space direction="vertical">
+            <Input.Password placeholder="input password" />
+            <Input.Password
+              placeholder="input password"
+              iconRender={(visible) =>
+                visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+              }
+            />
+            <Button type="primary">log in</Button>
+            <Button type="primary">sign up</Button>
+          </Space>
+        </Content>
+        <Footer>Footer</Footer>
+      </Layout>
     </div>
   );
-}
+};
 
 export default App;
