@@ -4,7 +4,15 @@ import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { Button } from "antd";
 import { useState } from "react";
 import { Layout } from "antd";
+import styled from "styled-components";
+import { username, password as validPassword } from "./ValidCredentials";
+// const validCredentials = require('./ValidCredentials');
+
 const { Header, Footer, Content } = Layout;
+
+const MyInput = styled(Input)`
+  font-size: 14px;
+`;
 
 const Credential = () => {
   const myStyle = {
@@ -13,7 +21,7 @@ const Credential = () => {
   const [name, setName] = useState("");
   const [password, setPass] = useState("");
   const myClick = (e) => {
-    if (name === "masoud" && password === "zare") {
+    if (name === username && password === validPassword) {
       console.log("hi");
     }
   };
@@ -22,7 +30,7 @@ const Credential = () => {
     <div className="firstpage">
       <Header style={myStyle}>Waste Management System</Header>
       <Content className="content">
-        <Input
+        <MyInput
           placeholder="input username"
           onChange={(Event) => setName(Event.target.value)}
         />

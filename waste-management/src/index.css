@@ -4,11 +4,16 @@
   justify-content: space-around;
   min-height: 100vh;
   min-width: 100vh;
+  display: block;
+  
 }
 .content {
   min-height: 70vh;
   margin-top: 10vh;
   float: center;
+  display: block;
+  margin-left: 400px;
+  margin-right: 400px;
 }
 .firstpage {
   align-items: center;
