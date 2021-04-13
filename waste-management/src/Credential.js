@@ -19,9 +19,9 @@ const Credential = () => {
   };
   const buttonDisable = name !== "masoud" || password !== "zare";
   return (
-    <div>
+    <div className="firstpage">
       <Header style={myStyle}>Waste Management System</Header>
-      <Content>
+      <Content className="content">
         <Input
           placeholder="input username"
           onChange={(Event) => setName(Event.target.value)}
@@ -40,7 +40,7 @@ const Credential = () => {
         </Link>
         <Button type="primary">sign up</Button>
       </Content>
-      <Footer>Footer</Footer>
+      <Footer>written by Masoud Zare</Footer>
     </div>
   );
 };
