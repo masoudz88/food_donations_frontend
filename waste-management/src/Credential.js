@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Input } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { Button } from "antd";
@@ -16,6 +17,7 @@ const Credential = () => {
       console.log("hi");
     }
   };
+  const buttonDisable = name !== "masoud" || password !== "zare";
   return (
     <div>
       <Header style={myStyle}>Waste Management System</Header>
@@ -31,9 +33,11 @@ const Credential = () => {
             visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
           }
         />
-        <Button type="primary" onClick={myClick}>
-          log in
-        </Button>
+        <Link to="./Mainpage">
+          <Button disabled={buttonDisable} type="primary" onClick={myClick}>
+            log in
+          </Button>
+        </Link>
         <Button type="primary">sign up</Button>
       </Content>
       <Footer>Footer</Footer>
