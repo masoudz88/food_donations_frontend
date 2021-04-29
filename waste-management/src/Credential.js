@@ -1,11 +1,13 @@
+import { useContext } from "react";
+import { LoginContext } from "./Contexts/LoginContext";
 import { Link } from "react-router-dom";
 import { Input } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { Button } from "antd";
-import { useState } from "react";
 import { Layout } from "antd";
 import styled from "styled-components";
 import { username, password as validPassword } from "./ValidCredentials";
+
 // const validCredentials = require('./ValidCredentials');
 
 const { Header, Footer, Content } = Layout;
@@ -15,11 +17,11 @@ const MyInput = styled(Input)`
 `;
 
 const Credential = () => {
+  const { name, password, setName, setPass } = useContext(LoginContext);
   const myStyle = {
     color: "white",
   };
-  const [name, setName] = useState("");
-  const [password, setPass] = useState("");
+
   const myClick = (e) => {
     if (name === username && password === validPassword) {
       console.log("hi");

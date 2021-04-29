@@ -1,7 +1,10 @@
 import Credential from "./Credential";
 import Mainpage from "./Mainpage";
+import { useState } from "react";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
+import { LoginContext } from "./Contexts/LoginContext";
 
 const App = (props) => {
   const Container = styled.div`
@@ -12,13 +15,18 @@ const App = (props) => {
     min-width: 100vh;
     display: block;
   `;
+  
+  const [name, setName] = useState("");
+  const [password, setPass] = useState("");
 
   return (
     <Router>
       <Container>
         <Switch>
-          <Route path="/" exact component={Credential} />
-          <Route path="/Mainpage" exact component={Mainpage} />
+          <LoginContext.Provider value={{name, setName, password, setPass}}>
+            <Route path="/" exact component={Credential} />
+            <Route path="/Mainpage" exact component={Mainpage} />
+          </LoginContext.Provider>
         </Switch>
       </Container>
     </Router>
