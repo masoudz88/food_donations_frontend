@@ -1,26 +1,26 @@
-import { useContext } from "react";
-import { LoginContext } from "./Contexts/LoginContext";
 import { Link } from "react-router-dom";
 import { Input } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { Button } from "antd";
 import { Layout } from "antd";
-import styled from "styled-components";
 import { username, password as validPassword } from "./ValidCredentials";
+import { useContext } from "react";
+import { LoginContext } from "./Contexts/LoginContext";
 
 // const validCredentials = require('./ValidCredentials');
 
 const { Header, Footer, Content } = Layout;
 
-const MyInput = styled(Input)`
+/*const MyInput = styled(Input)`
   font-size: 14px;
-`;
+`;*/
 
 const Credential = () => {
   const { name, password, setName, setPass } = useContext(LoginContext);
   const myStyle = {
     color: "white",
   };
+  console.log(name, password);
 
   const myClick = (e) => {
     if (name === username && password === validPassword) {
@@ -32,7 +32,7 @@ const Credential = () => {
     <div className="firstpage">
       <Header style={myStyle}>Waste Management System</Header>
       <Content className="content">
-        <MyInput
+        <Input
           placeholder="input username"
           onChange={(Event) => setName(Event.target.value)}
         />

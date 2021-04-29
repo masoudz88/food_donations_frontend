@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import { LoginContext } from "./Contexts/LoginContext";
 
-const App = (props) => {
+const App = () => {
   const Container = styled.div`
     float: center;
     align-items: center;
@@ -15,7 +15,7 @@ const App = (props) => {
     min-width: 100vh;
     display: block;
   `;
-  
+
   const [name, setName] = useState("");
   const [password, setPass] = useState("");
 
@@ -23,9 +23,13 @@ const App = (props) => {
     <Router>
       <Container>
         <Switch>
-          <LoginContext.Provider value={{name, setName, password, setPass}}>
+          <LoginContext.Provider value={{ name, setName, password, setPass }}>
             <Route path="/" exact component={Credential} />
-            <Route path="/Mainpage" exact component={Mainpage} />
+            {name && password ? (
+              <Route path="/Mainpage" exact component={Mainpage} />
+            ) : (
+              <Route path="/" exact component={Credential} />
+            )}
           </LoginContext.Provider>
         </Switch>
       </Container>
