@@ -24,12 +24,8 @@ const App = () => {
       <Container>
         <Switch>
           <LoginContext.Provider value={{ name, setName, password, setPass }}>
-            <Route path="/" exact component={Credential} />
-            {name && password ? (
-              <Route path="/Mainpage" exact component={Mainpage} />
-            ) : (
-              <Route path="/" exact component={Credential} />
-            )}
+            <Route path="/" exact component={Credential}></Route>
+            <Route path="/Mainpage" exact component={Mainpage}></Route>
           </LoginContext.Provider>
         </Switch>
       </Container>

@@ -22,6 +22,10 @@ const Credential = () => {
   };
   console.log(name, password);
 
+  const onChangeSearch = (event) => {
+    const { value } = event.target;
+    setName(value);
+  };
   const myClick = (e) => {
     if (name === username && password === validPassword) {
       console.log("hi");
@@ -34,10 +38,12 @@ const Credential = () => {
       <Content className="content">
         <Input
           placeholder="input username"
-          onChange={(Event) => setName(Event.target.value)}
+          value={name}
+          onChange={(Event) => onChangeSearch(Event)}
         />
         <Input.Password
           placeholder="input password"
+          value={password}
           onChange={(Event) => setPass(Event.target.value)}
           iconRender={(visible) =>
             visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
