@@ -1,7 +1,6 @@
 import Credential from "./Credential";
 import Mainpage from "./Mainpage";
 import { useState } from "react";
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import { LoginContext } from "./Contexts/LoginContext";

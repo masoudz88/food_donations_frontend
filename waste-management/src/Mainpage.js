@@ -1,33 +1,31 @@
-import { Col, Row } from "antd";
-import Grid from "antd/lib/card/Grid";
+import { Col, Row, Divider } from "antd";
+
 import { useContext } from "react";
 import { LoginContext } from "./Contexts/LoginContext";
-
+import companyList from "./companyList.json";
 
 const Mainpage = () => {
   const { name } = useContext(LoginContext);
   console.log(name);
   return (
-    <div>
+    <div className="content">
       <h1 style={{ textAlign: "center" }}>you have logged in as: {name}</h1>
-      <h2> Companies list</h2>
-      <Grid container spacing={1}>
-        <Grid container item xs={12} spacing={3}>
-          <Row>
-            <Col>Sobeys</Col>
-          </Row>
-        </Grid>
-        <Grid container item xs={12} spacing={3}>
-          <Row>
-            <Col>Walmart</Col>
-          </Row>
-        </Grid>
-        <Grid container item xs={12} spacing={3}>
-          <Row>
-            <Col>Costco</Col>
-          </Row>
-        </Grid>
-      </Grid>
+      <Divider orientation="left">Companies List</Divider>
+
+      <Row className="companyNames" gutter={[50, 50]}>
+        {companyList.map((co) => (
+          <Col className="gutter-row" span={6}>
+            {co.name}
+          </Col>
+        ))}
+      </Row>
+      <Row gutter={[50, 50]}>
+        {companyList.map((co) => (
+          <Col className="gutter-row" span={6}>
+            <img alt={co.name} src={`${co.image}.jpg`} width="100%" />
+          </Col>
+        ))}
+      </Row>
     </div>
   );
 };
