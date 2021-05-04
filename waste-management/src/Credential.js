@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Input } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { Button } from "antd";
 import { Layout } from "antd";
-import { username, password as validPassword } from "./ValidCredentials";
-import { useContext } from "react";
+import {
+  username as validUsername,
+  password as validPassword,
+} from "./ValidCredentials";
+import { useContext, useState } from "react";
 import { LoginContext } from "./Contexts/LoginContext";
 
 // const validCredentials = require('./ValidCredentials');
@@ -16,50 +19,48 @@ const { Header, Footer, Content } = Layout;
 `;*/
 
 const Credential = () => {
-  const { name, password, setName, setPass } = useContext(LoginContext);
+  const { name, setName } = useContext(LoginContext);
+  const [username, setUsername] = useState("");
+
   const myStyle = {
     color: "white",
   };
-  console.log(name, password);
+  console.log(name);
 
-  const onChangeSearch = (event) => {
+  const onUserNameInputChange = (event) => {
     const { value } = event.target;
-    setName(value);
+    console.log("input:", value);
+    setUsername(value);
   };
 
-  const handleSubmit = (event) => {
-    alert("A name was submitted: " + name);
-    event.preventDefault();
+  const onSubmit = (e) => {
+    // TODO: implement user/pass checking again
+    console.log("submit clicked");
+    setName(username);
+    
+    // TODO: redirect using router
+    
   };
-  const myClick = (e) => {
-    if (name === username && password === validPassword) {
-      console.log("hi");
-    }
-  };
-  const buttonDisable = name !== "masoud" || password !== "zare";
+
   return (
     <div className="firstpage">
       <Header style={myStyle}>Waste Management System</Header>
       <Content className="content">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
           <Input
             placeholder="input username"
-            value={name}
-            onChange={(Event) => onChangeSearch(Event)}
+            onChange={(Event) => onUserNameInputChange(Event)}
           />
           <Input.Password
             placeholder="input password"
-            value={password}
-            onChange={(Event) => setPass(Event.target.value)}
+            onChange={(Event) => {}}
             iconRender={(visible) =>
               visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
             }
           />
-          <Link to="./Mainpage">
-            <Button disabled={buttonDisable} type="primary" onClick={myClick}>
-              log in
-            </Button>
-          </Link>
+          <Button type="submit" value="Login">
+            log in
+          </Button>
           <Button type="primary">sign up</Button>
         </form>
       </Content>

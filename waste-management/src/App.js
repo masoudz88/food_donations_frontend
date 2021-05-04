@@ -16,13 +16,12 @@ const App = () => {
   `;
 
   const [name, setName] = useState("");
-  const [password, setPass] = useState("");
 
   return (
     <Router>
       <Container>
         <Switch>
-          <LoginContext.Provider value={{ name, setName, password, setPass }}>
+          <LoginContext.Provider value={{ name, setName }}>
             <Route path="/" exact component={Credential}></Route>
             <Route path="/Mainpage" exact component={Mainpage}></Route>
           </LoginContext.Provider>

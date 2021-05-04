@@ -1,7 +1,7 @@
 [
-    { "name": "Sobeys", "image": "https://upload.wikimedia.org/wikipedia/en/4/4f/Sobeys_logo.svg"},
-    { "name": "Walmart", "image": "https://corporate.walmart.com/photos/walmart-logo" },
-    { "name": "Costco", "image": "" },    
-    { "name": "McDonald's", "image": "" }
+    { "id":"1", "name": "Sobeys", "image": "./logos/sobeys.png"},
+    { "id":"2", "name": "Walmart", "image": "./logos/sobeys.png" },
+    { "id":"3", "name": "Costco", "image": "" },    
+    { "id":"4", "name": "McDonald's", "image": "" }
        
   ]
