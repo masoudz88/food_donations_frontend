@@ -1,7 +1,7 @@
 [
     { "id":"1", "name": "Sobeys", "image": "./logos/sobeys.png"},
-    { "id":"2", "name": "Walmart", "image": "./logos/sobeys.png" },
-    { "id":"3", "name": "Costco", "image": "" },    
-    { "id":"4", "name": "McDonald's", "image": "" }
+    { "id":"2", "name": "Walmart", "image": "./logos/wal.png" },
+    { "id":"3", "name": "Costco", "image": "./logos/cost.png" },    
+    { "id":"4", "name": "McDonald's", "image": "./logos/McDonalds-Logo.png" }
        
   ]

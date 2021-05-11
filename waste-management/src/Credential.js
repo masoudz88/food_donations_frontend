@@ -6,8 +6,9 @@ import { Layout } from "antd";
 import {
   username as validUsername,
   password as validPassword,
+  password,
 } from "./ValidCredentials";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { LoginContext } from "./Contexts/LoginContext";
 
 // const validCredentials = require('./ValidCredentials');
@@ -21,11 +22,15 @@ const { Header, Footer, Content } = Layout;
 const Credential = () => {
   const { name, setName } = useContext(LoginContext);
   const [username, setUsername] = useState("");
+  const city = "st. john's"
 
   const myStyle = {
     color: "white",
   };
-  console.log(name);
+
+  useEffect(() => {
+    // TODO: if local storage has username, restore username from localStorage and redirect to mainpage
+  });
 
   const onUserNameInputChange = (event) => {
     const { value } = event.target;
@@ -35,11 +40,18 @@ const Credential = () => {
 
   const onSubmit = (e) => {
     // TODO: implement user/pass checking again
+    // if (name === "masoud" && password === "zare") {
     console.log("submit clicked");
     setName(username);
-    
-    // TODO: redirect using router
-    
+    localStorage.setItem("username", username);
+    localStorage.setItem("shoppingList", {
+      sobeys: {
+        123: 3,
+      },
+    });
+    // }
+    e.preventDefault();
+    // TODO: redirect to mainpage after successful login
   };
 
   return (
@@ -58,9 +70,7 @@ const Credential = () => {
               visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
             }
           />
-          <Button type="submit" value="Login">
-            log in
-          </Button>
+          <Button htmlType="submit">log in</Button>
           <Button type="primary">sign up</Button>
         </form>
       </Content>
