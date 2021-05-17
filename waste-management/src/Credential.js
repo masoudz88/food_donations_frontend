@@ -8,7 +8,7 @@ import {
   password as validPassword,
   password,
 } from "./ValidCredentials";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, history } from "react";
 import { LoginContext } from "./Contexts/LoginContext";
 
 // const validCredentials = require('./ValidCredentials');
@@ -19,10 +19,10 @@ const { Header, Footer, Content } = Layout;
   font-size: 14px;
 `;*/
 
-const Credential = () => {
+const Credential = (props) => {
   const { name, setName } = useContext(LoginContext);
   const [username, setUsername] = useState("");
-  const city = "st. john's"
+  const [error, setError] = useState("");
 
   const myStyle = {
     color: "white",
@@ -30,6 +30,16 @@ const Credential = () => {
 
   useEffect(() => {
     // TODO: if local storage has username, restore username from localStorage and redirect to mainpage
+
+    console.log("after", localStorage.getItem("username"));
+    if (localStorage.getItem("username") === "masoud") {
+      setName(localStorage.getItem("username"));
+    }
+    const isLogged = !!sessionStorage.getItem("token_object");
+
+    if (!isLogged) {
+      return <Redirect to="/Credential" />;
+    }
   });
 
   const onUserNameInputChange = (event) => {
@@ -44,14 +54,14 @@ const Credential = () => {
     console.log("submit clicked");
     setName(username);
     localStorage.setItem("username", username);
-    localStorage.setItem("shoppingList", {
-      sobeys: {
-        123: 3,
-      },
-    });
+    console.log("before", localStorage.getItem("username"));
     // }
     e.preventDefault();
     // TODO: redirect to mainpage after successful login
+    /* if (username === "masoud" || password === "zare") {
+      props.history.push("/Mainpage");
+    }*/
+    props.history.push("/Mainpage");
   };
 
   return (

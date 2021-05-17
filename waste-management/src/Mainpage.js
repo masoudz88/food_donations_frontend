@@ -1,4 +1,4 @@
-import { Col, Row, Divider } from "antd";
+import { Col, Row, Divider, Button } from "antd";
 
 import { useContext } from "react";
 import { LoginContext } from "./Contexts/LoginContext";
@@ -7,7 +7,7 @@ import companyList from "./companyList.json";
 const Mainpage = () => {
   const { name } = useContext(LoginContext);
   console.log(name);
-  
+
   return (
     <div className="content">
       <h1 style={{ textAlign: "center" }}>you have logged in as: {name}</h1>
@@ -16,7 +16,7 @@ const Mainpage = () => {
       <Row className="companyNames" gutter={[50, 50]}>
         {companyList.map((co) => (
           <Col className="gutter-row" span={6} key={co.id}>
-            {co.name}
+            <Button>{co.name}</Button>
           </Col>
         ))}
       </Row>
