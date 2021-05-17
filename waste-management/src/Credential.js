@@ -1,14 +1,9 @@
-import { Link, Redirect } from "react-router-dom";
 import { Input } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { Button } from "antd";
 import { Layout } from "antd";
-import {
-  username as validUsername,
-  password as validPassword,
-  password,
-} from "./ValidCredentials";
-import { useContext, useState, useEffect, history } from "react";
+import { username as validUsername, password } from "./ValidCredentials";
+import { useContext, useState, useEffect } from "react";
 import { LoginContext } from "./Contexts/LoginContext";
 
 // const validCredentials = require('./ValidCredentials');
@@ -21,8 +16,8 @@ const { Header, Footer, Content } = Layout;
 
 const Credential = (props) => {
   const { name, setName } = useContext(LoginContext);
+  const { isLogged, setIsLogged } = useContext(LoginContext);
   const [username, setUsername] = useState("");
-  const [error, setError] = useState("");
 
   const myStyle = {
     color: "white",
@@ -30,15 +25,10 @@ const Credential = (props) => {
 
   useEffect(() => {
     // TODO: if local storage has username, restore username from localStorage and redirect to mainpage
-
+    
     console.log("after", localStorage.getItem("username"));
     if (localStorage.getItem("username") === "masoud") {
       setName(localStorage.getItem("username"));
-    }
-    const isLogged = !!sessionStorage.getItem("token_object");
-
-    if (!isLogged) {
-      return <Redirect to="/Credential" />;
     }
   });
 
@@ -58,10 +48,12 @@ const Credential = (props) => {
     // }
     e.preventDefault();
     // TODO: redirect to mainpage after successful login
-    /* if (username === "masoud" || password === "zare") {
+    if (name === "masoud" && password === "zare") {
+      setIsLogged(true);
+      console.log(isLogged);
       props.history.push("/Mainpage");
-    }*/
-    props.history.push("/Mainpage");
+    }
+    //props.history.push("/Mainpage");
   };
 
   return (

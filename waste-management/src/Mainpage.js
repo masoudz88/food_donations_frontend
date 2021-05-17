@@ -1,12 +1,20 @@
 import { Col, Row, Divider, Button } from "antd";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { LoginContext } from "./Contexts/LoginContext";
 import companyList from "./companyList.json";
 
-const Mainpage = () => {
+const Mainpage = (props) => {
   const { name } = useContext(LoginContext);
+  const { isLogged, setIsLogged } = useContext(LoginContext);
   console.log(name);
+  console.log(isLogged);
+
+  useEffect(() => {    
+    if (isLogged === false) {
+      props.history.push("/");
+    }
+  },[isLogged, props.history]);
 
   return (
     <div className="content">
