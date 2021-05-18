@@ -24,13 +24,13 @@ const Mainpage = (props) => {
     companyList.map((co) => {
       switch (co.name) {
         case "Sobeys":
-          return <Sobeys />;
+          return props.history.push("/Mainpage/Sobeys");
         case "Walmart":
-          return <Walmart />;
+          return props.history.push("/Mainpage/Walmart");
         case "Costco":
-          return <Costco />;
+          return props.history.push("/Mainpage/Costco");
         case "McDonald's":
-          return <Mcdonald />;
+          return props.history.push("/Mainpage/Mcdonald");
         default:
           return <h1>No Company match</h1>;
       }
@@ -39,7 +39,7 @@ const Mainpage = (props) => {
   return (
     <div className="content">
       <h1 style={{ textAlign: "center" }}>you have logged in as: {name}</h1>
-      <Divider orientation="left">Companies List</Divider>      
+      <Divider orientation="left">Companies List</Divider>
       <Row className="companyNames" gutter={[50, 50]}>
         {companyList.map((co) => (
           <Col className="gutter-row" span={6} key={co.id}>
