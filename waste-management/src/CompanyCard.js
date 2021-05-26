@@ -6,17 +6,22 @@ import { Col, Row, Button } from "antd";
 
 const CompanyCard = (props) => {
   const { companies, setCompanies } = useContext(LoginContext);
-  const {setCompanyName} = useContext(LoginContext);
+  const { setCompanyName } = useContext(LoginContext);
 
   useEffect(() => {
     setCompanies(companyList);
   }, [setCompanies]);
-  console.log(companies);
-  
+
+  const handleDelete = (companyId) => {
+    let newCompanies = { ...companies };
+    newCompanies = companies.filter((c) => c.id !== companyId);
+    setCompanies(newCompanies);
+    console.log(newCompanies);
+  };
+
   const getCompanyName = (event) => {
-    const value=event.target.innerText;
+    const value = event.target.innerText;
     setCompanyName(value);
-    
   };
 
   return (
@@ -30,6 +35,9 @@ const CompanyCard = (props) => {
               </Button>
             </Link>
             <img alt={co.name} src={`${co.image}`} width="100%" />
+            <Button onClick={handleDelete(co.id)} danger>
+              Delete
+            </Button>
           </li>
         ))}
       </ul>

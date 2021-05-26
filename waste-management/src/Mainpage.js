@@ -15,11 +15,12 @@ const Mainpage = (props) => {
     }
   }, [isLogged, props.history]);
 
+  
+
   return (
     <div className="content">
       <h1 style={{ textAlign: "center" }}>you have logged in as: {name}</h1>
       <Divider orientation="left">Companies List</Divider>
-
       <Row gutter={[50, 50]}>
         <Col className="gutter-row" span={6}>
           <CompanyCard />
