@@ -1,0 +1,7 @@
+[
+    { "id":"1", "product": "Meat"},
+    { "id":"2", "product": "Dairy" },
+    { "id":"3", "product": "cooked food" },    
+    { "id":"4", "product": "Seafood" }
+       
+  ]
