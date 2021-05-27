@@ -10,12 +10,11 @@ const Mainpage = (props) => {
   console.log(isLogged);
 
   useEffect(() => {
+    console.log("Mainpage rendering.");
     if (isLogged === false) {
       props.history.push("/");
     }
   }, [isLogged, props.history]);
-
-  
 
   return (
     <div className="content">
