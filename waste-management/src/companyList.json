@@ -1,7 +1,7 @@
 [
-    { "id":"1", "name": "Sobeys", "image": "./logos/sobeys.png"},
-    { "id":"2", "name": "Walmart", "image": "./logos/wal.png" },
-    { "id":"3", "name": "Costco", "image": "./logos/cost.png" },    
-    { "id":"4", "name": "McDonald's", "image": "./logos/McDonalds-Logo.png" }
+    { "id":"1", "name": "Sobeys", "color": "green", "image": "./logos/sobeys.png"},
+    { "id":"2", "name": "Walmart", "color": "blue","image": "./logos/wal.png" },
+    { "id":"3", "name": "Costco", "color": "red","image": "./logos/cost.png" },    
+    { "id":"4", "name": "McDonald's", "color": "yellow","image": "./logos/McDonalds-Logo.png" }
        
   ]

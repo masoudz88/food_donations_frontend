@@ -2,7 +2,7 @@ import { Input } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { Button } from "antd";
 import { Layout } from "antd";
-import { username as validUsername, password } from "./ValidCredentials";
+import { username as validUsername } from "./ValidCredentials";
 import { useContext, useState, useEffect } from "react";
 import { LoginContext } from "./Contexts/LoginContext";
 
@@ -15,7 +15,7 @@ const { Header, Footer, Content } = Layout;
 `;*/
 
 const Credential = (props) => {
-  const { name, setName } = useContext(LoginContext);
+  const [ name, setName ] = useState("");  
   const { isLogged, setIsLogged } = useContext(LoginContext);
   const [username, setUsername] = useState("");
 
@@ -30,7 +30,7 @@ const Credential = (props) => {
     if (localStorage.getItem("username") === "masoud") {
       setName(localStorage.getItem("username"));
     }
-  });
+  },[name]);
 
   const onUserNameInputChange = (event) => {
     const { value } = event.target;
@@ -48,7 +48,7 @@ const Credential = (props) => {
     // }
     e.preventDefault();
     // TODO: redirect to mainpage after successful login
-    if (name === "masoud" && password === "zare") {
+    if (name === validUsername ) {
       setIsLogged(true);
       console.log(isLogged);
       props.history.push("/Mainpage");

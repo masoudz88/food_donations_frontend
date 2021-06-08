@@ -21,3 +21,8 @@
 .companyNames {
   background-color: rgb(182, 176, 176);
 }
+
+.rows {
+  display: flex;
+  flex-direction: row;
+}

@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { LoginContext } from "./Contexts/LoginContext";
 import { Link } from "react-router-dom";
 import companyList from "./companyList.json";
 import { Button } from "antd";
 
-const CompanyCard = (props) => {
+const CompanyCards = (props) => {
   const [companies, setCompanies] = useState([]);
 
   useEffect(() => {
     console.log(companies);
     setCompanies(companyList);
-  }, []);
+  }, [companies]);
 
   const handleDelete = (companyId) => {
     let newCompanies = { ...companies };
@@ -24,7 +23,7 @@ const CompanyCard = (props) => {
       <ul>
         {companies.map((co) => (
           <li key={co.id}>
-            <Link to="Mainpage/Products">
+            <Link to={`Mainpage/Company/${co.name}`}>
               <Button
                 onClick={() => {
                   // TODO: redirect to company URL
@@ -46,9 +45,9 @@ const CompanyCard = (props) => {
             </Button>
           </li>
         ))}
-      </ul>
+      </ul>      
     </div>
   );
 };
 
-export default CompanyCard;
+export default CompanyCards;
