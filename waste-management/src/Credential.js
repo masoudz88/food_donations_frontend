@@ -15,8 +15,7 @@ const { Content } = Layout;
 `;*/
 
 const Credential = (props) => {
-  const [name, setName] = useState("");
-  const { isLogged, setIsLogged } = useContext(LoginContext);
+  const {name, setName,isLogged, setIsLogged} = useContext(LoginContext);  
   const [username, setUsername] = useState("");
 
   useEffect(() => {
@@ -26,7 +25,7 @@ const Credential = (props) => {
     if (localStorage.getItem("username") === "masoud") {
       setName(localStorage.getItem("username"));
     }
-  }, [name]);
+  }, [name,setName]);
 
   const onUserNameInputChange = (event) => {
     const { value } = event.target;

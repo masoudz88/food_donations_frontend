@@ -1,8 +1,9 @@
-import { Divider } from "antd";
+import { Button, Divider } from "antd";
 import React, { useState, useEffect } from "react";
 import companyList from "./companyList.json";
 import productList from "./productList.json";
 import { Layout, Menu } from "antd";
+import { Link } from "react-router-dom";
 
 const CompanyInfo = (props) => {
   const [products, setProducts] = useState([]);
@@ -27,6 +28,11 @@ const CompanyInfo = (props) => {
           <Divider>
             <h1>{`${selectedCompany.name} Products`}</h1>
           </Divider>
+          <Link to="/Mainpage">
+            <Button style={{ margin: "24px" }} type="primary">
+              Go Back
+            </Button>
+          </Link>
           <Content style={{ padding: "0 50px" }}>
             <Layout
               className="site-layout-background"
@@ -41,9 +47,7 @@ const CompanyInfo = (props) => {
                 >
                   <SubMenu key="sub1" title="Items">
                     {products.map((product) => (
-                      <Menu.Item>
-                        {product.product}
-                      </Menu.Item>
+                      <Menu.Item>{product.product}</Menu.Item>
                     ))}
                   </SubMenu>
                 </Menu>

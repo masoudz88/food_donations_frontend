@@ -26,6 +26,9 @@ export const Companyform = () => {
   return (
     <div>
       <Content className="content">
+        <Link to="/Mainpage">
+          <Button type="primary">Go Back</Button>
+        </Link>
         <form onSubmit={onSubmit}>
           <Input
             style={{ marginTop: "40px", marginBottom: "40px" }}

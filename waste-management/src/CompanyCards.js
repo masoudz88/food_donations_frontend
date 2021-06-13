@@ -22,7 +22,7 @@ const CompanyCards = (props) => {
     <div>
       <ul className="rows">
         {companies.map((co) => (
-          <li style={{paddingRight:"10px"}} key={co.id}>
+          <li style={{ paddingRight: "10px" }} key={co.id}>
             <Link to={`Mainpage/Company/${co.name}`}>
               <Button
                 onClick={() => {
@@ -34,7 +34,7 @@ const CompanyCards = (props) => {
                 {co.name}
               </Button>
             </Link>
-            <img alt={co.name} src={`${co.image}`} width="100%" height="30%" />
+
             <Button
               onClick={() => {
                 handleDelete(co.id);
