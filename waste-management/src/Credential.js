@@ -8,29 +8,25 @@ import { LoginContext } from "./Contexts/LoginContext";
 
 // const validCredentials = require('./ValidCredentials');
 
-const { Header, Footer, Content } = Layout;
+const { Content } = Layout;
 
 /*const MyInput = styled(Input)`
   font-size: 14px;
 `;*/
 
 const Credential = (props) => {
-  const [ name, setName ] = useState("");  
+  const [name, setName] = useState("");
   const { isLogged, setIsLogged } = useContext(LoginContext);
   const [username, setUsername] = useState("");
 
-  const myStyle = {
-    color: "white",
-  };
-
   useEffect(() => {
     // TODO: if local storage has username, restore username from localStorage and redirect to mainpage
-    
+
     console.log("after", localStorage.getItem("username"));
     if (localStorage.getItem("username") === "masoud") {
       setName(localStorage.getItem("username"));
     }
-  },[name]);
+  }, [name]);
 
   const onUserNameInputChange = (event) => {
     const { value } = event.target;
@@ -48,7 +44,7 @@ const Credential = (props) => {
     // }
     e.preventDefault();
     // TODO: redirect to mainpage after successful login
-    if (name === validUsername ) {
+    if (name === validUsername) {
       setIsLogged(true);
       console.log(isLogged);
       props.history.push("/Mainpage");
@@ -58,7 +54,6 @@ const Credential = (props) => {
 
   return (
     <div className="firstpage">
-      <Header style={myStyle}>Waste Management System</Header>
       <Content className="content">
         <form onSubmit={onSubmit}>
           <Input
@@ -76,7 +71,6 @@ const Credential = (props) => {
           <Button type="primary">sign up</Button>
         </form>
       </Content>
-      <Footer>written by Masoud Zare</Footer>
     </div>
   );
 };

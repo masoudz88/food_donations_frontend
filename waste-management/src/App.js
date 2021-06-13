@@ -6,8 +6,15 @@ import styled from "styled-components";
 import { LoginContext } from "./Contexts/LoginContext";
 import CompanyInfo from "./CompanyInfo";
 import { Companyform } from "./Contexts/Companyform";
+import { Layout } from "antd";
+
+const { Header, Footer } = Layout;
 
 const App = () => {
+
+  const myStyle = {
+    color: "white",
+  };
   const Container = styled.div`
     float: center;
     align-items: center;
@@ -20,7 +27,9 @@ const App = () => {
   const [name, setName] = useState("");
 
   return (
+    
     <Router>
+      <Header style={myStyle}>Waste Management System</Header>
       <Container>
         <Switch>
           <LoginContext.Provider
@@ -36,6 +45,7 @@ const App = () => {
           </LoginContext.Provider>
         </Switch>
       </Container>
+      <Footer>written by Masoud Zare</Footer>
     </Router>
   );
 };

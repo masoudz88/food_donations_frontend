@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Input, Button, Layout } from "antd";
 import companyList from "../companyList.json";
+import { Link } from "react-router-dom";
 
 const { Content } = Layout;
 export const Companyform = () => {
@@ -19,6 +20,8 @@ export const Companyform = () => {
     let newCompanies = { ...company };
     newCompanies = company.push(value);
     addCompany(newCompanies);
+    console.log("there", company);
+    console.log("there", newCompanies);
   };
   return (
     <div>
@@ -29,9 +32,17 @@ export const Companyform = () => {
             placeholder="Company Name"
             onChange={onChange}
           />
-          <Button htmlType="submit" type="primary">
-            add
-          </Button>
+          <Link to="/Mainpage">
+            <Button
+              htmlType="submit"
+              type="primary"
+              onClick={() => {
+                alert("company added");
+              }}
+            >
+              add
+            </Button>
+          </Link>
         </form>
       </Content>
     </div>

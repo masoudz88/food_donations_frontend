@@ -28,10 +28,10 @@ const Mainpage = (props) => {
             <CompanyCards />
           </Col>
         </Row>
-        <Link to="Mainpage/Form">
-          <Button>Add New Companies</Button>
-        </Link>
       </div>
+      <Link to="Mainpage/Form">
+        <Button>Add New Companies</Button>
+      </Link>
     </div>
   );
 };
