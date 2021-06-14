@@ -47,7 +47,7 @@ const CompanyInfo = (props) => {
                 >
                   <SubMenu key="sub1" title="Items">
                     {products.map((product) => (
-                      <Menu.Item>{product.product}</Menu.Item>
+                      <Menu.Item key={product.id}>{product.product}</Menu.Item>
                     ))}
                   </SubMenu>
                 </Menu>

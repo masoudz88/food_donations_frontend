@@ -9,25 +9,24 @@ import { Companyform } from "./Contexts/Companyform";
 import { Layout } from "antd";
 
 const { Header, Footer } = Layout;
+const Container = styled.div`
+  float: center;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 100vh;
+  min-width: 100vh;
+  display: block;
+`;
 
 const App = () => {
-
   const myStyle = {
     color: "white",
   };
-  const Container = styled.div`
-    float: center;
-    align-items: center;
-    justify-content: space-around;
-    min-height: 100vh;
-    min-width: 100vh;
-    display: block;
-  `;
+
   const [isLogged, setIsLogged] = useState(false);
   const [name, setName] = useState("");
 
   return (
-    
     <Router>
       <Header style={myStyle}>Waste Management System</Header>
       <Container>
