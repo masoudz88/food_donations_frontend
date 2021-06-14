@@ -15,7 +15,7 @@ const { Content } = Layout;
 `;*/
 
 const Credential = (props) => {
-  const {name, setName,isLogged, setIsLogged} = useContext(LoginContext);  
+  const { name, setName, isLogged, setIsLogged } = useContext(LoginContext);
   const [username, setUsername] = useState("");
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const Credential = (props) => {
     if (localStorage.getItem("username") === "masoud") {
       setName(localStorage.getItem("username"));
     }
-  }, [name,setName]);
+  }, [name, setName]);
 
   const onUserNameInputChange = (event) => {
     const { value } = event.target;
@@ -56,10 +56,12 @@ const Credential = (props) => {
       <Content className="content">
         <form onSubmit={onSubmit}>
           <Input
+            className="input"
             placeholder="input username"
             onChange={(Event) => onUserNameInputChange(Event)}
           />
           <Input.Password
+            className="input"
             placeholder="input password"
             onChange={(Event) => {}}
             iconRender={(visible) =>

@@ -31,6 +31,7 @@ export const Companyform = () => {
         </Link>
         <form onSubmit={onSubmit}>
           <Input
+            className="input"
             style={{ marginTop: "40px", marginBottom: "40px" }}
             placeholder="Company Name"
             onChange={onChange}

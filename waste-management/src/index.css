@@ -11,8 +11,8 @@
   margin-top: 10vh;
   float: center;
   display: block;
-  margin-left: 400px;
-  margin-right: 400px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 .firstpage {
   align-items: left;
@@ -25,4 +25,8 @@
 .rows {
   display: flex;
   flex-direction: row;
+}
+.input {
+  width: 40%;
+  display: flex;
 }
