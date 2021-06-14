@@ -13,8 +13,8 @@ const Container = styled.div`
   float: center;
   align-items: center;
   justify-content: space-around;
-  min-height: 100vh;
-  min-width: 100vh;
+  height: 100%;
+  width: 100%;
   display: block;
 `;
 
