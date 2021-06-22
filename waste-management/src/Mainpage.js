@@ -6,8 +6,8 @@ import "./index.css";
 import { Link } from "react-router-dom";
 
 const Mainpage = (props) => {
-  const { name } = useContext(LoginContext);
-  const { isLogged } = useContext(LoginContext);
+  const { name,isLogged } = useContext(LoginContext);
+  
   console.log(name);
   console.log(isLogged);
 
