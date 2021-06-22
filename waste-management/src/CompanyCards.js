@@ -1,6 +1,6 @@
 import React, {  useContext } from "react";
 import { Link } from "react-router-dom";
-
+import {DeleteOutlined} from '@ant-design/icons';
 import { Button } from "antd";
 import { CompanyContext } from './Contexts/CompanyContext';
 
@@ -37,7 +37,7 @@ const CompanyCards = (props) => {
               }}
               danger
             >
-              Delete
+              <DeleteOutlined />
             </Button>
           </li>
         ))}
