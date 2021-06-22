@@ -1,26 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext,useState} from "react";
 import { Input, Button, Layout } from "antd";
-import companyList from "../companyList.json";
 import { Link } from "react-router-dom";
+import { CompanyContext } from './CompanyContext';
 
 const { Content } = Layout;
 export const Companyform = () => {
-  const [company, addCompany] = useState({});
-  const [value, setValue] = useState("");
-  useEffect(() => {
-    console.log("here", company);
-    addCompany(companyList);
-  }, [company]);
-  const onChange = (e) => {
-    const { changeValue } = e.target;
-    setValue(changeValue);
-  };
+  const {companies, setCompanies} = useContext(CompanyContext);
+  const [value, setValue] = useState(""); 
 
-  const onSubmit = () => {
-    let newCompanies = { ...company };
-    newCompanies = company.push(value);
-    addCompany(newCompanies);
-    console.log("there", company);
+  const onChange=(event=>{    
+    setValue({id:4,name:event.target.value})
+  }) 
+
+  const onSubmit = (event) => {
+    event.preventDefault()
+    let newCompanies = { ...companies };
+    newCompanies = companies.push(value);
+    setCompanies(newCompanies);
+    console.log("there", companies);
     console.log("there", newCompanies);
   };
   return (
@@ -36,7 +33,7 @@ export const Companyform = () => {
             placeholder="Company Name"
             onChange={onChange}
           />
-          <Link to="/Mainpage">
+         
             <Button
               htmlType="submit"
               type="primary"
@@ -46,7 +43,7 @@ export const Companyform = () => {
             >
               add
             </Button>
-          </Link>
+          
         </form>
       </Content>
     </div>

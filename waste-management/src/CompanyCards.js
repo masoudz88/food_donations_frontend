@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, {  useContext } from "react";
 import { Link } from "react-router-dom";
-import companyList from "./companyList.json";
+
 import { Button } from "antd";
+import { CompanyContext } from './Contexts/CompanyContext';
 
 const CompanyCards = (props) => {
-  const [companies, setCompanies] = useState([]);
-
-  useEffect(() => {
-    console.log(companies);
-    setCompanies(companyList);
-  }, [companies]);
-
+  const {companies, setCompanies} = useContext(CompanyContext);
+  
   const handleDelete = (companyId) => {
     let newCompanies = { ...companies };
     newCompanies = companies.filter((c) => c.id !== companyId);

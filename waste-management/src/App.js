@@ -1,9 +1,11 @@
 import Credential from "./Credential";
 import Mainpage from "./Mainpage";
+import companyList from "./companyList.json";
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import { LoginContext } from "./Contexts/LoginContext";
+import { CompanyContext } from "./Contexts/CompanyContext";
 import CompanyInfo from "./CompanyInfo";
 import { Companyform } from "./Contexts/Companyform";
 import { Layout } from "antd";
@@ -25,6 +27,7 @@ const App = () => {
 
   const [isLogged, setIsLogged] = useState(false);
   const [name, setName] = useState("");
+  const [companies, setCompanies] = useState(companyList);
 
   return (
     <Router>
@@ -35,12 +38,14 @@ const App = () => {
             value={{ isLogged, setIsLogged, name, setName }}
           >
             <Route path="/" exact component={Credential}></Route>
+            <CompanyContext.Provider value={{ companies, setCompanies }}>
             <Route path="/Mainpage" exact component={Mainpage}></Route>
             <Route path="/Mainpage/Form" exact component={Companyform}></Route>
             <Route
               path="/Mainpage/company/:companyId"
               component={CompanyInfo}
             ></Route>
+            </CompanyContext.Provider>
           </LoginContext.Provider>
         </Switch>
       </Container>
