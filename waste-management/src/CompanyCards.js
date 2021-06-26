@@ -1,12 +1,12 @@
-import React, {  useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import {DeleteOutlined} from '@ant-design/icons';
-import { Button } from "antd";
-import { CompanyContext } from './Contexts/CompanyContext';
+import { DeleteOutlined } from "@ant-design/icons";
+import { Button, List } from "antd";
+import { CompanyContext } from "./Contexts/CompanyContext";
 
 const CompanyCards = (props) => {
-  const {companies, setCompanies} = useContext(CompanyContext);
-  
+  const { companies, setCompanies } = useContext(CompanyContext);
+
   const handleDelete = (companyId) => {
     let newCompanies = { ...companies };
     newCompanies = companies.filter((c) => c.id !== companyId);
@@ -16,10 +16,13 @@ const CompanyCards = (props) => {
 
   return (
     <div>
-      <ul className="rows">
-        {companies.map((co) => (
-          <li style={{ paddingRight: "10px" }} key={co.id}>
-            <Link to={`Mainpage/Company/${co.name}`}>
+      <List
+        header={<div>Company List</div>}
+        bordered
+        dataSource={companies}
+        renderItem={(item) => (
+          <List.Item>
+            <Link to={`Mainpage/Company/${item.name}`}>
               <Button
                 onClick={() => {
                   // TODO: redirect to company URL
@@ -27,21 +30,21 @@ const CompanyCards = (props) => {
                 }}
                 type="link"
               >
-                {co.name}
+                {item.name}
               </Button>
             </Link>
 
             <Button
               onClick={() => {
-                handleDelete(co.id);
+                handleDelete(item.id);
               }}
               danger
             >
               <DeleteOutlined />
             </Button>
-          </li>
-        ))}
-      </ul>
+          </List.Item>
+        )}
+      />
     </div>
   );
 };
