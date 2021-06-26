@@ -14,8 +14,8 @@ export const Companyform = () => {
 
   const onSubmit = (event) => {
     event.preventDefault()
-    let newCompanies = { ...companies };
-    newCompanies = companies.push(value);
+    let newCompanies = [ ...companies];
+    newCompanies.push(value);
     setCompanies(newCompanies);
     console.log("there", companies);
     console.log("there", newCompanies);

@@ -30,3 +30,8 @@
   width: 40%;
   display: flex;
 }
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

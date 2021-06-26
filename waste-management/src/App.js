@@ -20,7 +20,6 @@ const Container = styled.div`
   display: block;
 `;
 
-
 const App = () => {
   const myStyle = {
     color: "white",
@@ -40,17 +39,21 @@ const App = () => {
           >
             <Route path="/" exact component={Credential}></Route>
             <CompanyContext.Provider value={{ companies, setCompanies }}>
-            <Route path="/Mainpage" exact component={Mainpage}></Route>
-            <Route path="/Mainpage/Form" exact component={Companyform}></Route>
-            <Route
-              path="/Mainpage/company/:companyId"
-              component={CompanyInfo}
-            ></Route>
+              <Route path="/Mainpage" exact component={Mainpage}></Route>
+              <Route
+                path="/Mainpage/Form"
+                exact
+                component={Companyform}
+              ></Route>
+              <Route
+                path="/Mainpage/company/:companyId"
+                component={CompanyInfo}
+              ></Route>
             </CompanyContext.Provider>
           </LoginContext.Provider>
         </Switch>
       </Container>
-      <Footer>written by Masoud Zare</Footer>
+      <Footer className="footer">written by Masoud Zare</Footer>
     </Router>
   );
 };
