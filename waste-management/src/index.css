@@ -22,13 +22,13 @@
   display: flex;
 }
 .footer {
-  position: fixed;
+  position: absolute;
   bottom: 0%;
   width: 100%;
 }
 .list {
   width: 50%;
-  margin-bottom: 10%;
+  margin-bottom: 3%;
 }
 .listItem {
   float: center;

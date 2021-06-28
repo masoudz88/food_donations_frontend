@@ -1,4 +1,4 @@
-import { Col, Row, Divider, Button } from "antd";
+import { Divider, Button } from "antd";
 import CompanyCards from "./CompanyCards";
 import { useContext, useEffect } from "react";
 import { LoginContext } from "./Contexts/LoginContext";
