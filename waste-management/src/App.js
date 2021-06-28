@@ -15,8 +15,6 @@ const Container = styled.div`
   float: center;
   align-items: center;
   justify-content: space-around;
-  height: 100%;
-  width: 100%;
   display: block;
 `;
 

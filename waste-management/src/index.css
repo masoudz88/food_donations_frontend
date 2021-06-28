@@ -2,15 +2,10 @@
   float: center;
   align-items: center;
   justify-content: space-around;
-  min-height: 100vh;
-  min-width: 100vh;
   display: block;
 }
 .content {
-  min-height: 70vh;
-  margin-top: 10vh;
-  float: center;
-  display: block;
+  margin-top: 5%;
   margin-left: 10%;
   margin-right: 10%;
 }
@@ -22,16 +17,19 @@
   background-color: rgb(182, 176, 176);
 }
 
-.rows {
-  display: flex;
-  flex-direction: row;
-}
 .input {
   width: 40%;
   display: flex;
 }
 .footer {
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: 0%;
   width: 100%;
+}
+.list {
+  width: 50%;
+  margin-bottom: 10%;
+}
+.listItem {
+  float: center;
 }

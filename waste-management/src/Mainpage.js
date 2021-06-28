@@ -6,8 +6,8 @@ import "./index.css";
 import { Link } from "react-router-dom";
 
 const Mainpage = (props) => {
-  const { name,isLogged } = useContext(LoginContext);
-  
+  const { name, isLogged } = useContext(LoginContext);
+
   console.log(name);
   console.log(isLogged);
 
@@ -22,12 +22,8 @@ const Mainpage = (props) => {
     <div className="content">
       <h1 style={{ textAlign: "center" }}>you have logged in as: {name}</h1>
       <Divider orientation="left">Companies List</Divider>
-      <div className="rows">
-        <Row gutter={16}>
-          <Col className="gutter-row" span={6}>
-            <CompanyCards />
-          </Col>
-        </Row>
+      <div>
+        <CompanyCards />
       </div>
       <Link to="Mainpage/Form">
         <Button>Add New Companies</Button>
