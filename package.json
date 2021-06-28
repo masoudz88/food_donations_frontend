@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/masoudz88/food_donations_frontend#readme",
   "dependencies": {
+    "debug": "^4.3.1",
     "express": "^4.17.1"
   }
 }

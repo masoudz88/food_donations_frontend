@@ -9,6 +9,7 @@ import { CompanyContext } from "./Contexts/CompanyContext";
 import CompanyInfo from "./CompanyInfo";
 import { Companyform } from "./Contexts/Companyform";
 import { Layout } from "antd";
+import debugFactory from "debug";
 
 const { Header, Footer } = Layout;
 const Container = styled.div`
@@ -17,6 +18,10 @@ const Container = styled.div`
   justify-content: space-around;
   display: block;
 `;
+
+const debug = debugFactory("app");
+debug("debugger");
+console.log("console");
 
 const App = () => {
   const myStyle = {
