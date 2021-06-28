@@ -17,6 +17,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-around;
   display: block;
+  padding-bottom: 5.5rem;
 `;
 
 const debug = debugFactory("app");
