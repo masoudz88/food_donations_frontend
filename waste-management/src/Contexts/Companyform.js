@@ -17,8 +17,6 @@ export const Companyform = () => {
     let newCompanies = [...companies];
     newCompanies.push(value);
     setCompanies(newCompanies);
-    console.log("there", companies);
-    console.log("there", newCompanies);
   };
   return (
     <div>

@@ -4,15 +4,18 @@ import { useContext, useEffect } from "react";
 import { LoginContext } from "./Contexts/LoginContext";
 import "./index.css";
 import { Link } from "react-router-dom";
+import debugFactory from "debug";
+
+const debug = debugFactory("app");
 
 const Mainpage = (props) => {
   const { name, isLogged } = useContext(LoginContext);
 
-  console.log(name);
-  console.log(isLogged);
+  debug(name);
+  debug(isLogged);
 
   useEffect(() => {
-    console.log("Mainpage rendering.");
+    debug("Mainpage rendering.");
     if (isLogged === false) {
       props.history.push("/");
     }

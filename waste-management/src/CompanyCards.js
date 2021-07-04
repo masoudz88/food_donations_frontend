@@ -10,8 +10,7 @@ const CompanyCards = (props) => {
   const handleDelete = (companyId) => {
     let newCompanies = { ...companies };
     newCompanies = companies.filter((c) => c.id !== companyId);
-    setCompanies(newCompanies);
-    console.log(newCompanies);
+    setCompanies(newCompanies);    
   };
 
   return (

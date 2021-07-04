@@ -22,7 +22,7 @@ const Container = styled.div`
 
 const debug = debugFactory("app");
 debug("debugger");
-console.log("console");
+
 
 const App = () => {
   const myStyle = {
