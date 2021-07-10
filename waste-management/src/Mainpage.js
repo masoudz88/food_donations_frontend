@@ -6,7 +6,7 @@ import "./index.css";
 import { Link } from "react-router-dom";
 import debugFactory from "debug";
 
-const debug = debugFactory("app");
+const debug = debugFactory("Mainpage");
 
 const Mainpage = (props) => {
   const { name, isLogged } = useContext(LoginContext);

@@ -10,7 +10,7 @@ import debugFactory from "debug";
 // const validCredentials = require('./ValidCredentials');
 
 const { Content } = Layout;
-const debug = debugFactory("app");
+const debug = debugFactory("credential");
 
 
 const Credential = (props) => {
