@@ -1,24 +1,30 @@
 import { Button, Divider } from "antd";
-import React, { useState, useEffect } from "react";
-import companyList from "./companyList.json";
-import productList from "./productList.json";
+import React, { useState, useEffect, useContext } from "react";
+import { CompanyContext } from "./Contexts/CompanyContext";
 import { Layout, Menu } from "antd";
 import { Link } from "react-router-dom";
 
 const CompanyInfo = (props) => {
   const [products, setProducts] = useState([]);
+  const { companies } = useContext(CompanyContext);
   const [selectedCompany, setSelectedCompany] = useState(null);
   const id = window.location.pathname.split("/");
   const { SubMenu } = Menu;
   const { Content, Sider } = Layout;
 
   useEffect(() => {
+    fetch("/api/products/")
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((jsonResponse) => setProducts(jsonResponse));
     const urlId = id[3]; // TODO: get id from URL
-    const foundCompany = companyList.find((c) => c.name === urlId);
+    const foundCompany = companies.find((c) => c.name === urlId);
 
     setSelectedCompany(foundCompany);
-    setProducts(productList);
-  }, [products, id]);
+  }, [companies, id]);
 
   return (
     <div>
@@ -47,7 +53,7 @@ const CompanyInfo = (props) => {
                 >
                   <SubMenu key="sub1" title="Items">
                     {products.map((product) => (
-                      <Menu.Item key={product.id}>{product.product}</Menu.Item>
+                      <Menu.Item key={product.id}>{product.name}</Menu.Item>
                     ))}
                   </SubMenu>
                 </Menu>

@@ -31,7 +31,7 @@ const App = () => {
   const [name, setName] = useState("");
   const [companies, setCompanies] = useState([]);
   useEffect(() => {
-    fetch("/api/products/")
+    fetch("/api/companies/")
       .then((res) => {
         if (res.ok) {
           return res.json();
