@@ -39,7 +39,6 @@ const App = () => {
       })
       .then((jsonResponse) => setCompanies(jsonResponse));
   }, []);
-  console.log(companies[0]["id"],companies[0]["name"]);
 
   return (
     <Router>
