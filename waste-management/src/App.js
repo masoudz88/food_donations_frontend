@@ -1,7 +1,6 @@
 import Credential from "./Credential";
 import Mainpage from "./Mainpage";
-import companyList from "./companyList.json";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import { LoginContext } from "./Contexts/LoginContext";
@@ -23,7 +22,6 @@ const Container = styled.div`
 const debug = debugFactory("app");
 debug("debugger");
 
-
 const App = () => {
   const myStyle = {
     color: "white",
@@ -31,7 +29,17 @@ const App = () => {
 
   const [isLogged, setIsLogged] = useState(false);
   const [name, setName] = useState("");
-  const [companies, setCompanies] = useState(companyList);
+  const [companies, setCompanies] = useState([]);
+  useEffect(() => {
+    fetch("/api/products/")
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((jsonResponse) => setCompanies(jsonResponse));
+  }, []);
+  console.log(companies[0]["id"],companies[0]["name"]);
 
   return (
     <Router>

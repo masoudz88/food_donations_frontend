@@ -4,13 +4,13 @@ import { DeleteOutlined } from "@ant-design/icons";
 import { Button, List } from "antd";
 import { CompanyContext } from "./Contexts/CompanyContext";
 
-const CompanyCards = (props) => {
+const CompanyCards = () => {
   const { companies, setCompanies } = useContext(CompanyContext);
-
+  console.log(companies);
   const handleDelete = (companyId) => {
     let newCompanies = { ...companies };
     newCompanies = companies.filter((c) => c.id !== companyId);
-    setCompanies(newCompanies);    
+    setCompanies(newCompanies);
   };
 
   return (
