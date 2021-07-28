@@ -8,12 +8,12 @@ const CompanyCards = () => {
   const { companies, setCompanies } = useContext(CompanyContext);
   console.log("before", companies);
 
-  const handleDelete = (companyId) => {
+  const handleDelete = async (companyId) => {
     const requestOptions = {
       method: "DELETE",
     };
 
-    fetch("/api/companies/" + companyId, requestOptions)
+    await fetch("/api/companies/" + companyId, requestOptions)
       .then((res) => {
         if (res.ok) {
           return res.json();
