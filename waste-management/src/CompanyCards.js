@@ -6,11 +6,20 @@ import { CompanyContext } from "./Contexts/CompanyContext";
 
 const CompanyCards = () => {
   const { companies, setCompanies } = useContext(CompanyContext);
-  console.log(companies);
+  console.log("before", companies);
+
   const handleDelete = (companyId) => {
-    let newCompanies = { ...companies };
-    newCompanies = companies.filter((c) => c.id !== companyId);
-    setCompanies(newCompanies);
+    const requestOptions = {
+      method: "DELETE",
+    };
+
+    fetch("/api/companies/" + companyId, requestOptions)
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((jsonResponse) => setCompanies(jsonResponse));
   };
 
   return (

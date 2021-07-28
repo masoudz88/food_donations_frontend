@@ -6,10 +6,10 @@ import { CompanyContext } from "./CompanyContext";
 const { Content } = Layout;
 export const Companyform = () => {
   const { companies, setCompanies } = useContext(CompanyContext);
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState([]);
 
   const onChange = (event) => {
-    setValue({ id: 4, name: event.target.value });
+    setValue({ id: +companies.length + 1, name: event.target.value });
   };
 
   const onSubmit = (event) => {
