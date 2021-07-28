@@ -9,12 +9,19 @@ const CompanyCards = () => {
   console.log("before", companies);
 
   const handleDelete = async (companyId) => {
-    const requestOptions = {
+    const options = {
+      hostname: "localhost",
+      port: 4000,
+      path: `/api/companies/${companyId}`,
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
     };
 
-    await fetch("/api/companies/" + companyId, requestOptions)
+    await fetch("/api/companies/" + companyId, options)
       .then((res) => {
+        console.log(res);
         if (res.ok) {
           return res.json();
         }
