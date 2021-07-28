@@ -5,29 +5,7 @@ import { Button, List } from "antd";
 import { CompanyContext } from "./Contexts/CompanyContext";
 
 const CompanyCards = () => {
-  const { companies, setCompanies } = useContext(CompanyContext);
-  console.log("before", companies);
-
-  const handleDelete = async (companyId) => {
-    const options = {
-      hostname: "localhost",
-      port: 4000,
-      path: `/api/companies/${companyId}`,
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    await fetch("/api/companies/" + companyId, options)
-      .then((res) => {
-        console.log(res);
-        if (res.ok) {
-          return res.json();
-        }
-      })
-      .then((jsonResponse) => setCompanies(jsonResponse));
-  };
+  const { companies, deleteCompany } = useContext(CompanyContext);
 
   return (
     <div>
@@ -39,19 +17,13 @@ const CompanyCards = () => {
         renderItem={(item) => (
           <List.Item className="listItem">
             <Link to={`Mainpage/Company/${item.name}`}>
-              <Button
-                onClick={() => {
-                  // TODO: redirect to company URL
-                  console.log("here");
-                }}
-                type="link"
-              >
+              <Button type="link">
                 {item.name}
               </Button>
             </Link>
             <Button
               onClick={() => {
-                handleDelete(item.id);
+                deleteCompany(item.id);
               }}
               danger
             >

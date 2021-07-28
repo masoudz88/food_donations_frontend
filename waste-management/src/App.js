@@ -1,6 +1,6 @@
 import Credential from "./Credential";
 import Mainpage from "./Mainpage";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import { LoginContext } from "./Contexts/LoginContext";
@@ -9,6 +9,7 @@ import CompanyInfo from "./CompanyInfo";
 import { Companyform } from "./Contexts/Companyform";
 import { Layout } from "antd";
 import debugFactory from "debug";
+import useCompany from "./useCompany";
 
 const { Header, Footer } = Layout;
 const Container = styled.div`
@@ -29,16 +30,8 @@ const App = () => {
 
   const [isLogged, setIsLogged] = useState(false);
   const [name, setName] = useState("");
-  const [companies, setCompanies] = useState([]);
-  useEffect(() => {
-    fetch("/api/companies/")
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
-      .then((jsonResponse) => setCompanies(jsonResponse));
-  }, []);
+
+  const { companies, deleteCompany } = useCompany();
 
   return (
     <Router>
@@ -49,7 +42,7 @@ const App = () => {
             value={{ isLogged, setIsLogged, name, setName }}
           >
             <Route path="/" exact component={Credential}></Route>
-            <CompanyContext.Provider value={{ companies, setCompanies }}>
+            <CompanyContext.Provider value={{ companies, deleteCompany }}>
               <Route path="/Mainpage" exact component={Mainpage}></Route>
               <Route
                 path="/Mainpage/Form"
