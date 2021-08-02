@@ -2,13 +2,13 @@ import { Button, Divider } from "antd";
 import React, { useState, useEffect, useContext } from "react";
 import { CompanyContext } from "./Contexts/CompanyContext";
 import { Layout, Menu } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const CompanyInfo = (props) => {
   const [products, setProducts] = useState([]);
   const { companies } = useContext(CompanyContext);
   const [selectedCompany, setSelectedCompany] = useState(null);
-  const id = window.location.pathname.split("/");
+  const { companyId } = useParams();
   const { SubMenu } = Menu;
   const { Content, Sider } = Layout;
 
@@ -20,11 +20,10 @@ const CompanyInfo = (props) => {
         }
       })
       .then((jsonResponse) => setProducts(jsonResponse));
-    const urlId = id[3]; // TODO: get id from URL
-    const foundCompany = companies.find((c) => c.name === urlId);
 
+    const foundCompany = companies.find((c) => c.name === companyId);
     setSelectedCompany(foundCompany);
-  }, [companies, id]);
+  }, [companies, companyId]);
 
   return (
     <div>
