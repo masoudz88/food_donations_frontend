@@ -5,18 +5,19 @@ import { CompanyContext } from "./CompanyContext";
 
 const { Content } = Layout;
 export const Companyform = () => {
-  const { companies, setCompanies } = useContext(CompanyContext);
+  const { companies, addCompany } = useContext(CompanyContext);
   const [value, setValue] = useState([]);
 
   const onChange = (event) => {
-    setValue({ id: +companies.length + 1, name: event.target.value });
+    setValue(event.target.value);
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
-    let newCompanies = [...companies];
-    newCompanies.push(value);
-    setCompanies(newCompanies);
+    const newCompany = [...companies];
+    newCompany.push(value);
+    addCompany(newCompany);
+    console.log(newCompany);
   };
   return (
     <div>

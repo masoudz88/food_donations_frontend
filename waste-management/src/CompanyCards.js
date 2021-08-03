@@ -5,7 +5,7 @@ import { Button, List } from "antd";
 import { CompanyContext } from "./Contexts/CompanyContext";
 
 const CompanyCards = () => {
-  const { companies, deleteCompany } = useContext(CompanyContext);
+  const { companies, deleteCompany } = useContext(CompanyContext);  
 
   return (
     <div>
@@ -17,9 +17,7 @@ const CompanyCards = () => {
         renderItem={(item) => (
           <List.Item className="listItem">
             <Link to={`Mainpage/Company/${item.name}`}>
-              <Button type="link">
-                {item.name}
-              </Button>
+              <Button type="link">{item.name}</Button>
             </Link>
             <Button
               onClick={() => {

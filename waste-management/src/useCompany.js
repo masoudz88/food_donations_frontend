@@ -10,23 +10,33 @@ const useCompany = () => {
           return res.json();
         }
       })
-      .then((jsonResponse) => setCompanies(jsonResponse))
+      .then((jsonResponse) => setCompanies(jsonResponse));
   }, [setCompanies]);
 
-  const deleteCompany = useCallback((companyId) => {
-    fetch("/api/companies/" + companyId, { method: "DELETE" })
-      .then((res) => {
+  const deleteCompany = useCallback(
+    (companyId) => {
+      fetch("/api/companies/" + companyId, { method: "DELETE" }).then((res) => {
         if (res.ok) {
           fetchCompanies();
         }
       });
+    },
+    [fetchCompanies]
+  );
+
+  const addCompany = useCallback(() => {
+    fetch("/api/companies/", { method: "POST" }).then((res) => {
+      if (res.ok) {
+        fetchCompanies();
+      }
+    });
   }, [fetchCompanies]);
 
   useEffect(() => {
     fetchCompanies();
   }, [fetchCompanies]);
 
-  return { companies, deleteCompany };
+  return { companies, deleteCompany, addCompany };
 };
 
 export default useCompany;
