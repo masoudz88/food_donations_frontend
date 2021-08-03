@@ -25,12 +25,15 @@ const useCompany = () => {
   );
 
   const addCompany = useCallback(() => {
-    fetch("/api/companies/", { method: "POST" }).then((res) => {
+    fetch("/api/companies/", {
+      method: "POST",
+      body: JSON.stringify(companies),
+    }).then((res) => {
       if (res.ok) {
         fetchCompanies();
       }
     });
-  }, [fetchCompanies]);
+  }, [fetchCompanies, companies]);
 
   useEffect(() => {
     fetchCompanies();
