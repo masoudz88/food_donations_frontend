@@ -1,15 +1,15 @@
 import React, { useContext, useState } from "react";
 import { Input, Button, Layout } from "antd";
 import { Link } from "react-router-dom";
-import { CompanyContext } from "./CompanyContext";
+import { CompanyContext } from "./Contexts/CompanyContext";
 
 const { Content } = Layout;
 export const Companyform = () => {
   const { companies, addCompany } = useContext(CompanyContext);
   const [value, setValue] = useState([]);
 
-  const onChange = (event) => {
-    setValue(event.target.value);
+  const onChange = (event, companyID) => {
+    setValue({ id: 10, name: event.target.value });
   };
 
   const onSubmit = (event) => {

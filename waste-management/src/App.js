@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { LoginContext } from "./Contexts/LoginContext";
 import { CompanyContext } from "./Contexts/CompanyContext";
 import CompanyInfo from "./CompanyInfo";
-import { Companyform } from "./Contexts/Companyform";
+import { Companyform } from "./Companyform";
 import { Layout } from "antd";
 import debugFactory from "debug";
 import useCompany from "./useCompany";
@@ -31,7 +31,7 @@ const App = () => {
   const [isLogged, setIsLogged] = useState(false);
   const [name, setName] = useState("");
 
-  const { companies, deleteCompany } = useCompany();
+  const { companies, deleteCompany, addCompany } = useCompany();
 
   return (
     <Router>
@@ -42,7 +42,9 @@ const App = () => {
             value={{ isLogged, setIsLogged, name, setName }}
           >
             <Route path="/" exact component={Credential}></Route>
-            <CompanyContext.Provider value={{ companies, deleteCompany }}>
+            <CompanyContext.Provider
+              value={{ companies, deleteCompany, addCompany }}
+            >
               <Route path="/Mainpage" exact component={Mainpage}></Route>
               <Route
                 path="/Mainpage/Form"
