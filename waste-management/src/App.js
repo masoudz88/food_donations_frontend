@@ -31,7 +31,7 @@ const App = () => {
   const [isLogged, setIsLogged] = useState(false);
   const [name, setName] = useState("");
 
-  const { companies, deleteCompany,setCompanies } = useCompany();
+  const { companies, deleteCompany, setCompanies } = useCompany();
 
   return (
     <Router>
@@ -42,7 +42,9 @@ const App = () => {
             value={{ isLogged, setIsLogged, name, setName }}
           >
             <Route path="/" exact component={Credential}></Route>
-            <CompanyContext.Provider value={{ companies, deleteCompany,setCompanies }}>
+            <CompanyContext.Provider
+              value={{ companies, deleteCompany, setCompanies }}
+            >
               <Route path="/Mainpage" exact component={Mainpage}></Route>
               <Route
                 path="/Mainpage/Form"
@@ -53,6 +55,10 @@ const App = () => {
                 path="/Mainpage/company/:companyId"
                 component={CompanyInfo}
               ></Route>
+              <Route path="/login">login</Route>
+              <Route path="/signup">sign up</Route>
+              <Route path="/logout">log out</Route>
+              <Route path="/whoami">who am I?</Route>
             </CompanyContext.Provider>
           </LoginContext.Provider>
         </Switch>

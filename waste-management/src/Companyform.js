@@ -3,9 +3,10 @@ import { Input, Button, Layout } from "antd";
 import { Link } from "react-router-dom";
 import { CompanyContext } from "./Contexts/CompanyContext";
 
+
 const { Content } = Layout;
 export const Companyform = () => {
-  const { companies, setCompanies } = useContext(CompanyContext);
+  const { setCompanies } = useContext(CompanyContext);
   const [value, setValue] = useState([]);
 
   const onChange = (event, companyID) => {
