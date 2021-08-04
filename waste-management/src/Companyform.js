@@ -5,19 +5,23 @@ import { CompanyContext } from "./Contexts/CompanyContext";
 
 const { Content } = Layout;
 export const Companyform = () => {
-  const { companies, addCompany } = useContext(CompanyContext);
+  const { companies, setCompanies } = useContext(CompanyContext);
   const [value, setValue] = useState([]);
 
   const onChange = (event, companyID) => {
-    setValue({ id: 10, name: event.target.value });
+    setValue({ name: event.target.value });
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
-    const newCompany = [...companies];
-    newCompany.push(value);
-    addCompany(newCompany);
-    console.log(newCompany);
+
+    fetch("/api/companies/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(value),
+    }).then((jsonResponse) => {
+      setCompanies(jsonResponse);
+    });
   };
   return (
     <div>
@@ -37,7 +41,7 @@ export const Companyform = () => {
             htmlType="submit"
             type="primary"
             onClick={() => {
-              alert("company added");
+              alert(value.name + " added");
             }}
           >
             add

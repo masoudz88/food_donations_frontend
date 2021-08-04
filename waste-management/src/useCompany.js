@@ -24,21 +24,22 @@ const useCompany = () => {
     [fetchCompanies]
   );
 
-  const addCompany = useCallback(() => {
-    fetch("/api/companies/", {
-      method: "POST",
-    }).then((res) => {
-      if (res.ok) {
-        fetchCompanies();
-      }
-    });
-  }, [fetchCompanies]);
+  // const addCompany = useCallback(() => {
+  //   fetch("/api/companies/", {
+  //     method: "POST",
+
+  //   }).then((res) => {
+  //     if (res.ok) {
+  //       fetchCompanies();
+  //     }
+  //   });
+  // }, [fetchCompanies]);
 
   useEffect(() => {
     fetchCompanies();
   }, [fetchCompanies]);
 
-  return { companies, deleteCompany, addCompany };
+  return { companies, deleteCompany, setCompanies };
 };
 
 export default useCompany;
