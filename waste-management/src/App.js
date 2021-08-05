@@ -10,6 +10,7 @@ import { Companyform } from "./Companyform";
 import { Layout } from "antd";
 import debugFactory from "debug";
 import useCompany from "./useCompany";
+import Signup from './Signup';
 
 const { Header, Footer } = Layout;
 const Container = styled.div`
@@ -56,7 +57,7 @@ const App = () => {
                 component={CompanyInfo}
               ></Route>
               <Route path="/login">login</Route>
-              <Route path="/signup">sign up</Route>
+              <Route path="/signup"><Signup/></Route>
               <Route path="/logout">log out</Route>
               <Route path="/whoami">who am I?</Route>
             </CompanyContext.Provider>
