@@ -6,12 +6,12 @@ import { username as validUsername } from "./ValidCredentials";
 import { useContext, useState, useEffect } from "react";
 import { LoginContext } from "./Contexts/LoginContext";
 import debugFactory from "debug";
+import { Link } from "react-router-dom";
 
 // const validCredentials = require('./ValidCredentials');
 
 const { Content } = Layout;
 const debug = debugFactory("credential");
-
 
 const Credential = (props) => {
   const { name, setName, isLogged, setIsLogged } = useContext(LoginContext);
@@ -68,7 +68,9 @@ const Credential = (props) => {
             }
           />
           <Button htmlType="submit">log in</Button>
-          <Button type="primary">sign up</Button>
+          <Link to="signup">
+            <Button type="primary">sign up</Button>
+          </Link>
         </form>
       </Content>
     </div>

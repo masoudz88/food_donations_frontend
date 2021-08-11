@@ -29,6 +29,7 @@ const Signup = (props) => {
       body: JSON.stringify(username, password),
     }).then((jsonResponse) => {
       setUsername(jsonResponse);
+      setPassword(jsonResponse);
     });
   };
 
@@ -49,7 +50,13 @@ const Signup = (props) => {
               visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
             }
           />
-          <Button className="button" type="primary">
+          <Button
+            className="button"
+            type="primary"
+            onClick={() => {
+              alert(username + " added");
+            }}
+          >
             sign up
           </Button>
         </form>

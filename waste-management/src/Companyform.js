@@ -3,7 +3,6 @@ import { Input, Button, Layout } from "antd";
 import { Link } from "react-router-dom";
 import { CompanyContext } from "./Contexts/CompanyContext";
 
-
 const { Content } = Layout;
 export const Companyform = () => {
   const { setCompanies } = useContext(CompanyContext);
@@ -20,8 +19,16 @@ export const Companyform = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(value),
-    }).then((jsonResponse) => {
-      setCompanies(jsonResponse);
+    }).then((res) => {
+      if (res.ok) {
+        fetch("/api/companies/")
+          .then((res) => {
+            if (res.ok) {
+              return res.json();
+            }
+          })
+          .then((jsonResponse) => setCompanies(jsonResponse));
+      }
     });
   };
   return (
