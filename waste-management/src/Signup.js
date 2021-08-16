@@ -27,9 +27,16 @@ const Signup = (props) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(username, password),
-    }).then((jsonResponse) => {
-      setUsername(jsonResponse);
-      setPassword(jsonResponse);
+    }).then((res) => {
+      if (res.ok) {
+        fetch("/api/users/")
+          .then((res) => {
+            if (res.ok) {
+              return res.json();
+            }
+          })
+          .then((jsonResponse) => setUsername(jsonResponse));
+      }
     });
   };
 
