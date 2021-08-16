@@ -11,6 +11,7 @@ import { Layout } from "antd";
 import debugFactory from "debug";
 import useCompany from "./useCompany";
 import Signup from './Signup';
+import useProduct from "./useProduct";
 
 const { Header, Footer } = Layout;
 const Container = styled.div`
@@ -33,7 +34,7 @@ const App = () => {
   const [name, setName] = useState("");
 
   const { companies, deleteCompany, setCompanies } = useCompany();
-
+  const { products, deleteProduct } = useProduct();
   return (
     <Router>
       <Header style={myStyle}>Waste Management System</Header>
@@ -44,7 +45,7 @@ const App = () => {
           >
             <Route path="/" exact component={Credential}></Route>
             <CompanyContext.Provider
-              value={{ companies, deleteCompany, setCompanies }}
+              value={{ companies, deleteCompany, setCompanies, products, deleteProduct }}
             >
               <Route path="/Mainpage" exact component={Mainpage}></Route>
               <Route

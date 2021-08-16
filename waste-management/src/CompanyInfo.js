@@ -5,25 +5,17 @@ import { Layout, Menu } from "antd";
 import { Link, useParams } from "react-router-dom";
 
 const CompanyInfo = (props) => {
-  const [products, setProducts] = useState([]);
-  const { companies } = useContext(CompanyContext);
+  
+  const { companies, products, setProducts } = useContext(CompanyContext);
   const [selectedCompany, setSelectedCompany] = useState(null);
   const { companyId } = useParams();
   const { SubMenu } = Menu;
   const { Content, Sider } = Layout;
 
-  useEffect(() => {
-    fetch("/api/products/")
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
-      .then((jsonResponse) => setProducts(jsonResponse));
-
+  useEffect(() => {   
     const foundCompany = companies.find((c) => c.name === companyId);
     setSelectedCompany(foundCompany);
-  }, [companies, companyId]);
+  }, [companies, companyId, setProducts]);
 
   return (
     <div>
