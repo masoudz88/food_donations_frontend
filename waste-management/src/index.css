@@ -36,4 +36,16 @@
 .button {
   margin-top: 1rem;
 }
+.landingpage{
+  display: flex;
 
+  justify-content: center;
+
+  align-items: center;
+}
+.heading{
+  font-size: 36px;
+  line-height: 40px;  
+  color: white;  
+  text-align: center; 
+}
