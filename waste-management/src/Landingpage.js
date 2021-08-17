@@ -4,11 +4,10 @@ import React from 'react'
 const Landingpage = () => {
     return (
         <div >
-          <div
+          <div className=""
   style={{
-    background: `url('${process.env.PUBLIC_URL}/logos/donations.jpg')`,
-    width:"100%",
-    height: 500,  
+    background: `url('${process.env.PUBLIC_URL}/logos/donations.jpg')`,    
+    height: "100vh",  
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',    
     
