@@ -34,7 +34,7 @@ const App = () => {
   const [name, setName] = useState("");
 
   const { companies, deleteCompany, setCompanies } = useCompany();
-  const { products, deleteProduct } = useProduct();
+  const { products, deleteProduct, fetchProducts } = useProduct();
   return (
     <Router>
       <Header style={myStyle}>Waste Management System</Header>
@@ -45,7 +45,7 @@ const App = () => {
           >
             <Route path="/" exact component={Credential}></Route>
             <CompanyContext.Provider
-              value={{ companies, deleteCompany, setCompanies, products, deleteProduct }}
+              value={{ companies, deleteCompany, setCompanies, products, deleteProduct, fetchProducts }}
             >
               <Route path="/Mainpage" exact component={Mainpage}></Route>
               <Route

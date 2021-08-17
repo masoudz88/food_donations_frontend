@@ -5,8 +5,7 @@ import { Layout, Menu } from "antd";
 import { Link, useParams } from "react-router-dom";
 
 const CompanyInfo = (props) => {
-  
-  const { companies, products, setProducts } = useContext(CompanyContext);
+  const { companies, products, setProducts, fetchProducts } = useContext(CompanyContext);
   const [selectedCompany, setSelectedCompany] = useState(null);
   const { companyId } = useParams();
   const { SubMenu } = Menu;
@@ -15,7 +14,8 @@ const CompanyInfo = (props) => {
   useEffect(() => {   
     const foundCompany = companies.find((c) => c.name === companyId);
     setSelectedCompany(foundCompany);
-  }, [companies, companyId, setProducts]);
+    fetchProducts(foundCompany.id);
+  }, [companies, companyId, setProducts, fetchProducts]);
 
   return (
     <div>

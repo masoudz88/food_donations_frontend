@@ -26,7 +26,7 @@ const Signup = (props) => {
     fetch("/api/users/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(username, password),
+      body: JSON.stringify({ name: username, password }),
     }).then((res) => {
       if (res.ok) {
         fetch("/api/users/")
@@ -59,10 +59,7 @@ const Signup = (props) => {
           />
           <Button
             className="button"
-            type="primary"
-            onClick={() => {
-              alert(username + " added");
-            }}
+            htmlType="submit"
           >
             sign up
           </Button>

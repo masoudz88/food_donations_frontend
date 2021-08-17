@@ -3,8 +3,8 @@ import { useCallback, useEffect, useState } from "react";
 const useProduct = () => {
   const [products, setProducts] = useState([]);
 
-  const fetchProducts = useCallback(() => {
-    fetch("/api/products/")
+  const fetchProducts = useCallback((companyId) => {
+    fetch(`/api/products?companyId=${companyId}`)
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -23,12 +23,8 @@ const useProduct = () => {
     },
     [fetchProducts]
   );
-  
-  useEffect(() => {
-    fetchProducts();
-  }, [fetchProducts]);
 
-  return { products, deleteProduct };
+  return { products, deleteProduct, fetchProducts };
 };
 
 export default useProduct;
