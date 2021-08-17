@@ -1,4 +1,5 @@
 import Credential from "./Credential";
+import Landingpage from "./Landingpage";
 import Mainpage from "./Mainpage";
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -44,6 +45,7 @@ const App = () => {
             value={{ isLogged, setIsLogged, name, setName }}
           >
             <Route path="/" exact component={Credential}></Route>
+            <Route path="/Landingpage" exact component={Landingpage}></Route>
             <CompanyContext.Provider
               value={{ companies, deleteCompany, setCompanies, products, deleteProduct, fetchProducts }}
             >
