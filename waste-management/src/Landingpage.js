@@ -1,9 +1,10 @@
 import React from 'react'
-
+import LandingNav from './navbar/LandingNav';
 
 const Landingpage = () => {
     return (
         <div >
+          <LandingNav/>
           <div className="landingpage"
   style={{
     background: `url('${process.env.PUBLIC_URL}/logos/donations.jpg')`,    
@@ -13,7 +14,8 @@ const Landingpage = () => {
     
   }}
 >
-    <h1 className="heading">Help the poverty</h1>
+    <h1 className="heading">
+     You are the solution,<br/> to the problem of hunger in the classroom</h1>
 </div>
         </div>
     )

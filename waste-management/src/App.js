@@ -44,8 +44,8 @@ const App = () => {
           <LoginContext.Provider
             value={{ isLogged, setIsLogged, name, setName }}
           >
-            <Route path="/" exact component={Credential}></Route>
-            <Route path="/Landingpage" exact component={Landingpage}></Route>
+            <Route path="/credential" exact component={Credential}></Route>
+            <Route path="/" exact component={Landingpage}></Route>
             <CompanyContext.Provider
               value={{ companies, deleteCompany, setCompanies, products, deleteProduct, fetchProducts }}
             >
