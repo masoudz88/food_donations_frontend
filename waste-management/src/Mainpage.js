@@ -5,8 +5,8 @@ import { LoginContext } from "./Contexts/LoginContext";
 import "./index.css";
 import { Link } from "react-router-dom";
 import debugFactory from "debug";
-import {  Layout, Menu } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { Layout, Menu } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 
 const debug = debugFactory("Mainpage");
 
@@ -24,17 +24,25 @@ const Mainpage = (props) => {
   }, [isLogged, props.history]);
 
   return (
-    <div className="content">
-       <Layout className="layout">
-    <Header className="header">
-      <div className="logo" />
-      <Menu className="menuItems" mode="horizontal" defaultSelectedKeys={['2']}>          
-        <Menu.Item key="1" icon={<UserOutlined />} title="Log In" ><Link to="Credential">Current User: {!name && "No User"}{name}</Link></Menu.Item>        
-                
-      </Menu>
-    </Header>    
-  </Layout>
-      
+    <div className="mainpage">
+      <Layout className="layout">
+        <Header className="header">
+          <div className="logo" />
+          <Menu
+            className="menuItems"
+            mode="horizontal"
+            defaultSelectedKeys={["2"]}
+          >
+            <Menu.Item key="1" icon={<UserOutlined />} title="Log In">
+              <Link to="Credential">
+                Current User: {!name && "No User"}
+                {name}
+              </Link>
+            </Menu.Item>
+          </Menu>
+        </Header>
+      </Layout>
+
       <Divider orientation="left">Companies List</Divider>
       <div>
         <CompanyCards />

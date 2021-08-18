@@ -7,6 +7,16 @@
   background-color: white;  
 }
 
+.mainpage{
+  margin-left: 5%;  
+}
+.companyform{
+  display: flex;    
+  justify-content: center;
+  align-items: center;
+  margin-left: 5%;
+  margin-top: 5%;
+}
 
 .companyNames {
   background-color: rgb(182, 176, 176);

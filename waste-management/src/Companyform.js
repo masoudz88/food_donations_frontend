@@ -32,8 +32,8 @@ export const Companyform = () => {
     });
   };
   return (
-    <div>
-      <Content className="content">
+    <div className="companyform">
+      <Content>
         <Link to="/Mainpage">
           <Button type="default">Go Back</Button>
         </Link>
