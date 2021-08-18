@@ -3,6 +3,7 @@ import { Layout } from "antd";
 import { useContext, useState, useEffect } from "react";
 import { LoginContext } from "./Contexts/LoginContext";
 import debugFactory from "debug";
+import {Link} from "react-router-dom";
 
 
 
@@ -79,8 +80,11 @@ const Credential = (props) => {
 
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
         <Button type="primary" htmlType="submit">
-          Submit
+          Log In
         </Button>
+        <Link to="/Signup">
+        <Button style={{marginLeft:"2%"}}>Sign Up</Button>
+        </Link>
       </Form.Item>
     </Form>        
     </Layout>

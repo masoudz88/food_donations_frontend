@@ -1,11 +1,9 @@
 import { Input } from "antd";
-import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { Button } from "antd";
-import { Layout } from "antd";
+import { Layout, Form } from "antd";
 import { useState } from "react";
 import debugFactory from "debug";
 
-const { Content } = Layout;
 const debug = debugFactory("signup");
 
 const Signup = (props) => {
@@ -22,7 +20,7 @@ const Signup = (props) => {
   };
 
   const onSubmit = (e) => {
-    e.preventDefault();
+    alert("Submited!");
     fetch("/api/users/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -42,29 +40,39 @@ const Signup = (props) => {
 
   return (
     <div className="firstpage">
-      <Content className="content">
-        <form onSubmit={onSubmit}>
-          <Input
-            className="signup"
-            placeholder="input username"
-            onChange={(Event) => onUserNameInputChange(Event)}
-          />
-          <Input.Password
-            className="signup"
-            placeholder="input password"
-            onChange={(Event) => onPasswordInputChange(Event)}
-            iconRender={(visible) =>
-              visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-            }
-          />
-          <Button
-            className="button"
-            htmlType="submit"
+      <Layout className="firstpage">
+        <Form
+          name="basic"
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 16 }}
+          initialValues={{ remember: true }}
+          onFinish={onSubmit}
+        >
+          <Form.Item
+            label="Username"
+            name="username"
+            rules={[{ required: true, message: "Please input your username!" }]}
           >
-            sign up
-          </Button>
-        </form>
-      </Content>
+            <Input onChange={(Event) => onUserNameInputChange(Event)} />
+          </Form.Item>
+
+          <Form.Item
+            label="Password"
+            name="password"
+            rules={[{ required: true, message: "Please input your password!" }]}
+          >
+            <Input.Password
+              onChange={(Event) => onPasswordInputChange(Event)}
+            />
+          </Form.Item>
+
+          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+            <Button type="primary" htmlType="submit">
+              sign up
+            </Button>
+          </Form.Item>
+        </Form>
+      </Layout>
     </div>
   );
 };
