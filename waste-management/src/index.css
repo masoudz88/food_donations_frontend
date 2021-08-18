@@ -3,10 +3,15 @@
   margin-left: 10%;
   margin-right: 10%;
 }
-.firstpage {
-  align-items: left;
-  float: center;
+.firstpage {  
+  display: flex;    
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+  background-color: white;
 }
+
+
 .companyNames {
   background-color: rgb(182, 176, 176);
 }
