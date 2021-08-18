@@ -5,12 +5,14 @@ import { LoginContext } from "./Contexts/LoginContext";
 import "./index.css";
 import { Link } from "react-router-dom";
 import debugFactory from "debug";
+import {  Layout, Menu } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 
 const debug = debugFactory("Mainpage");
 
 const Mainpage = (props) => {
   const { name, isLogged } = useContext(LoginContext);
-
+  const { Header } = Layout;
   debug(name);
   debug(isLogged);
 
@@ -23,7 +25,16 @@ const Mainpage = (props) => {
 
   return (
     <div className="content">
-      <h1 style={{ textAlign: "center" }}>you have logged in as: {name}</h1>
+       <Layout className="layout">
+    <Header className="header">
+      <div className="logo" />
+      <Menu className="menuItems" mode="horizontal" defaultSelectedKeys={['2']}>          
+        <Menu.Item key="1" icon={<UserOutlined />} title="Log In" ><Link to="Credential">Current User: {!name && "No User"}{name}</Link></Menu.Item>        
+                
+      </Menu>
+    </Header>    
+  </Layout>
+      
       <Divider orientation="left">Companies List</Divider>
       <div>
         <CompanyCards />

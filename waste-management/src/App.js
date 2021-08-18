@@ -39,7 +39,7 @@ const App = () => {
   return (
     <Router>
       <Header style={myStyle}>Waste Management System</Header>
-      <Container>
+      <Container >
         <Switch>
           <LoginContext.Provider
             value={{ isLogged, setIsLogged, name, setName }}
