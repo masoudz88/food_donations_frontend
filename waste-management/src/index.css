@@ -63,7 +63,13 @@
 }
 .header{
   background: rgba(255, 255, 255, 0.3);
+ 
 }
 .layout{
+  
   background: rgba(255, 255, 255, 0.3);
+}
+
+.menuItems{  
+  float:right;
 }
