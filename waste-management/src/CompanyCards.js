@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined, SettingFilled } from "@ant-design/icons";
 import { Button, List } from "antd";
 import { CompanyContext } from "./Contexts/CompanyContext";
 import debugFactory from "debug";
@@ -22,14 +22,21 @@ const CompanyCards = () => {
             <Link to={`Mainpage/Company/${item.name}`}>
               <Button type="link">{item.name}</Button>
             </Link>
-            <Button
-              onClick={() => {
-                deleteCompany(item.id);
-              }}
-              danger
-            >
-              <DeleteOutlined />
-            </Button>
+            <div style={{ float: "right" }}>
+              <Link to={`Mainpage/Update/${item.id}`}>
+                <Button style={{ marginRight: 20 }}>
+                  <SettingFilled />
+                </Button>
+              </Link>
+              <Button
+                onClick={() => {
+                  deleteCompany(item.id);
+                }}
+                danger
+              >
+                <DeleteOutlined />
+              </Button>
+            </div>
           </List.Item>
         )}
       />

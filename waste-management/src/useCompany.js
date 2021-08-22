@@ -38,12 +38,26 @@ const useCompany = () => {
     },
     [fetchCompanies]
   );
+  const updateCompany = useCallback(
+    (value, companyID) => {
+      fetch("/api/companies/" + companyID, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(value),
+      }).then((res) => {
+        if (res.ok) {
+          fetchCompanies();
+        }
+      });
+    },
+    [fetchCompanies]
+  );
 
   useEffect(() => {
     fetchCompanies();
   }, [fetchCompanies]);
 
-  return { companies, deleteCompany, addCompany };
+  return { companies, deleteCompany, addCompany, updateCompany };
 };
 
 export default useCompany;

@@ -13,6 +13,7 @@ import debugFactory from "debug";
 import useCompany from "./useCompany";
 import Signup from "./Signup";
 import useProduct from "./useProduct";
+import UpdateCompany from "./UpdateCompany";
 
 const { Header, Footer } = Layout;
 const Container = styled.div`
@@ -34,7 +35,7 @@ const App = () => {
   const [isLogged, setIsLogged] = useState(false);
   const [name, setName] = useState("");
 
-  const { companies, deleteCompany, addCompany } = useCompany();
+  const { companies, deleteCompany, addCompany, updateCompany } = useCompany();
   const { products, deleteProduct, fetchProducts } = useProduct();
   return (
     <Router>
@@ -51,6 +52,7 @@ const App = () => {
                 companies,
                 deleteCompany,
                 addCompany,
+                updateCompany,
                 products,
                 deleteProduct,
                 fetchProducts,
@@ -61,6 +63,11 @@ const App = () => {
                 path="/Mainpage/Form"
                 exact
                 component={Companyform}
+              ></Route>
+              <Route
+                path="/Mainpage/Update/:id"
+                exact
+                component={UpdateCompany}
               ></Route>
               <Route
                 path="/Mainpage/company/:companyId"
