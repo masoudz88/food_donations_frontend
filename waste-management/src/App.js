@@ -11,7 +11,7 @@ import { Companyform } from "./Companyform";
 import { Layout } from "antd";
 import debugFactory from "debug";
 import useCompany from "./useCompany";
-import Signup from './Signup';
+import Signup from "./Signup";
 import useProduct from "./useProduct";
 
 const { Header, Footer } = Layout;
@@ -34,7 +34,7 @@ const App = () => {
   const [isLogged, setIsLogged] = useState(false);
   const [name, setName] = useState("");
 
-  const { companies, deleteCompany, setCompanies } = useCompany();
+  const { companies, deleteCompany, addCompany } = useCompany();
   const { products, deleteProduct, fetchProducts } = useProduct();
   return (
     <Router>
@@ -47,7 +47,14 @@ const App = () => {
             <Route path="/credential" exact component={Credential}></Route>
             <Route path="/" exact component={Landingpage}></Route>
             <CompanyContext.Provider
-              value={{ companies, deleteCompany, setCompanies, products, deleteProduct, fetchProducts }}
+              value={{
+                companies,
+                deleteCompany,
+                addCompany,
+                products,
+                deleteProduct,
+                fetchProducts,
+              }}
             >
               <Route path="/Mainpage" exact component={Mainpage}></Route>
               <Route
@@ -60,7 +67,9 @@ const App = () => {
                 component={CompanyInfo}
               ></Route>
               <Route path="/login">login</Route>
-              <Route path="/signup"><Signup/></Route>
+              <Route path="/signup">
+                <Signup />
+              </Route>
               <Route path="/logout">log out</Route>
               <Route path="/whoami">who am I?</Route>
             </CompanyContext.Provider>

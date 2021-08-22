@@ -2,10 +2,11 @@ import React, { useContext, useState } from "react";
 import { Input, Button, Layout } from "antd";
 import { Link } from "react-router-dom";
 import { CompanyContext } from "./Contexts/CompanyContext";
+import Form from "antd/lib/form/Form";
 
 const { Content } = Layout;
 export const Companyform = () => {
-  const { setCompanies } = useContext(CompanyContext);
+  const { addCompany } = useContext(CompanyContext);
   const [value, setValue] = useState([]);
 
   const onChange = (event, companyID) => {
@@ -13,23 +14,7 @@ export const Companyform = () => {
   };
 
   const onSubmit = (event) => {
-    event.preventDefault();
-
-    fetch("/api/companies/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(value),
-    }).then((res) => {
-      if (res.ok) {
-        fetch("/api/companies/")
-          .then((res) => {
-            if (res.ok) {
-              return res.json();
-            }
-          })
-          .then((jsonResponse) => setCompanies(jsonResponse));
-      }
-    });
+    addCompany(value);
   };
   return (
     <div className="companyform">
@@ -37,7 +22,7 @@ export const Companyform = () => {
         <Link to="/Mainpage">
           <Button type="default">Go Back</Button>
         </Link>
-        <form onSubmit={onSubmit}>
+        <Form onFinish={onSubmit}>
           <Input
             className="input"
             style={{ marginTop: "40px", marginBottom: "40px" }}
@@ -54,7 +39,7 @@ export const Companyform = () => {
           >
             add
           </Button>
-        </form>
+        </Form>
       </Content>
     </div>
   );
