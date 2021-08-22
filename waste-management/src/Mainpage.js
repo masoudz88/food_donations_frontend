@@ -36,7 +36,7 @@ const Mainpage = (props) => {
             <Menu.Item key="1" icon={<UserOutlined />} title="Log In">
               <Link to="Credential">
                 Current User: {!name && "No User"}
-                {name}
+                {name.toUpperCase()}
               </Link>
             </Menu.Item>
           </Menu>
