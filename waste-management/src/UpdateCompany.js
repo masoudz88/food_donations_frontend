@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
 import { Input, Button, Layout } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { CompanyContext } from "./Contexts/CompanyContext";
 import Form from "antd/lib/form/Form";
 
 const UpdateCompany = (companyID) => {
   const { updateCompany } = useContext(CompanyContext);
   const [value, setValue] = useState([]);
+  const { id } = useParams();
   const { Content } = Layout;
 
   const onChange = (event) => {
@@ -14,7 +15,8 @@ const UpdateCompany = (companyID) => {
   };
 
   const onSubmit = (event) => {
-    updateCompany(value, companyID);
+    alert("company updated");
+    updateCompany(value, id);
   };
   return (
     <div className="companyform">
@@ -30,13 +32,7 @@ const UpdateCompany = (companyID) => {
             onChange={onChange}
           />
 
-          <Button
-            htmlType="submit"
-            type="primary"
-            onClick={() => {
-              alert(value.name + " updated");
-            }}
-          >
+          <Button htmlType="submit" type="primary">
             update
           </Button>
         </Form>
