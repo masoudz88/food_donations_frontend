@@ -17,12 +17,11 @@ export const AddproductFrom = () => {
   };
 
   const onSubmit = (event) => {
-    addProduct(value);
+    addProduct(value, selectedCompany.name);
   };
   useEffect(() => {
     const foundCompany = companies.find((c) => c.name === companyName);
     setSelectedCompany(foundCompany);
-    addProduct(foundCompany.id);
   }, [companies, companyName, addProduct]);
   return (
     <div className="companyform">

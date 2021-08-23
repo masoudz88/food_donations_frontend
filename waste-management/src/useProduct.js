@@ -29,11 +29,11 @@ const useProduct = () => {
     [fetchProducts]
   );
   const addProduct = useCallback(
-    (value) => {
+    (value, companyId) => {
       fetch("/api/products/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(value),
+        body: JSON.stringify({value,companyId}),
       }).then((res) => {
         if (res.ok) {
           fetchProducts();
