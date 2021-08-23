@@ -18,7 +18,7 @@ const useProduct = () => {
 
   const deleteProduct = useCallback(
     (companyId, productId) => {
-      fetch("/api/products/" + companyId + "/" + productId, {
+      fetch(`/api/products/" ${companyId}  / ${productId} `, {
         method: "DELETE",
       }).then((res) => {
         if (res.ok) {

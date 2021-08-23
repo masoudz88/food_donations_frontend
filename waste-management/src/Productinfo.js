@@ -39,7 +39,7 @@ const Productinfo = (props) => {
                 <Button type="link">{item.name}</Button>
                 <Button
                   onClick={() => {
-                    deleteProduct(selectedCompany.id,item.id);
+                    deleteProduct(selectedCompany.id, item.id);
                   }}
                   danger
                 >
@@ -48,6 +48,7 @@ const Productinfo = (props) => {
               </List.Item>
             )}
           />
+          <Button className="button">Add New Products</Button>
         </div>
       )}
     </div>
