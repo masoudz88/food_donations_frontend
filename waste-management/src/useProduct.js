@@ -17,8 +17,11 @@ const useProduct = () => {
   );
 
   const deleteProduct = useCallback(
-    (productId) => {
-      fetch("/api/products/" + productId, { method: "DELETE" }).then((res) => {
+    (productId, companyId) => {
+      fetch("/api/products/" + productId, {
+        method: "DELETE",
+        body: JSON.stringify(companyId),
+      }).then((res) => {
         if (res.ok) {
           fetchProducts();
         }
