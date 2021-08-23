@@ -9,7 +9,6 @@ const Productinfo = (props) => {
     useContext(CompanyContext);
   const [selectedCompany, setSelectedCompany] = useState(null);
   const { companyId } = useParams();
-  console.log(selectedCompany);
 
   useEffect(() => {
     const foundCompany = companies.find((c) => c.name === companyId);
@@ -39,8 +38,8 @@ const Productinfo = (props) => {
               <List.Item className="listItem">
                 <Button type="link">{item.name}</Button>
                 <Button
-                  onClick={() => {                    
-                    deleteProduct(item.id, selectedCompany.id);
+                  onClick={() => {
+                    deleteProduct(selectedCompany.id,item.id);
                   }}
                   danger
                 >
