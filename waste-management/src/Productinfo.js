@@ -9,12 +9,12 @@ const Productinfo = (props) => {
     useContext(CompanyContext);
   const [selectedCompany, setSelectedCompany] = useState(null);
   const { companyId } = useParams();
+  
 
   useEffect(() => {
     const foundCompany = companies.find((c) => c.name === companyId);
     setSelectedCompany(foundCompany);
     fetchProducts(foundCompany.id);
-    console.log(products);
   }, [companies, companyId, setProducts, fetchProducts]);
 
   return (
@@ -48,7 +48,9 @@ const Productinfo = (props) => {
               </List.Item>
             )}
           />
-          <Button className="button">Add New Products</Button>
+          <Link to={`/Mainpage/company/${selectedCompany.name}/AddProductForm`}>
+            <Button className="button">Add New Products</Button>
+          </Link>
         </div>
       )}
     </div>

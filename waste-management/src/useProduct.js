@@ -28,8 +28,22 @@ const useProduct = () => {
     },
     [fetchProducts]
   );
+  const addProduct = useCallback(
+    (value) => {
+      fetch("/api/products/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(value),
+      }).then((res) => {
+        if (res.ok) {
+          fetchProducts();
+        }
+      });
+    },
+    [fetchProducts]
+  );
 
-  return { products, deleteProduct, fetchProducts };
+  return { products, deleteProduct, fetchProducts, addProduct };
 };
 
 export default useProduct;

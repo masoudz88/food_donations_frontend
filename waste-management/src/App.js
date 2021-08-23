@@ -14,6 +14,7 @@ import Signup from "./Signup";
 import useProduct from "./useProduct";
 import UpdateCompany from "./UpdateCompany";
 import Productinfo from "./Productinfo";
+import { AddproductFrom } from "./AddProductForm";
 
 const { Header, Footer } = Layout;
 const Container = styled.div`
@@ -36,7 +37,7 @@ const App = () => {
   const [name, setName] = useState("");
 
   const { companies, deleteCompany, addCompany, updateCompany } = useCompany();
-  const { products, deleteProduct, fetchProducts } = useProduct();
+  const { products, deleteProduct, fetchProducts, addProduct } = useProduct();
   return (
     <Router>
       <Header style={myStyle}>Waste Management System</Header>
@@ -56,13 +57,19 @@ const App = () => {
                 products,
                 deleteProduct,
                 fetchProducts,
+                addProduct,
               }}
             >
               <Route path="/Mainpage" exact component={Mainpage}></Route>
               <Route
-                path="/Mainpage/Form"
+                path="/Mainpage/AddCompany"
                 exact
                 component={Companyform}
+              ></Route>
+              <Route
+                path="/Mainpage/company/:companyName/AddProductForm"
+                exact
+                component={AddproductFrom}
               ></Route>
               <Route
                 path="/Mainpage/Update/:id"
@@ -71,6 +78,7 @@ const App = () => {
               ></Route>
               <Route
                 path="/Mainpage/company/:companyId"
+                exact
                 component={Productinfo}
               ></Route>
               <Route path="/login">login</Route>

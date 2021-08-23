@@ -47,7 +47,7 @@ const Mainpage = (props) => {
       <div>
         <CompanyCards />
       </div>
-      <Link to="Mainpage/Form">
+      <Link to="Mainpage/AddCompany">
         <Button>Add New Companies</Button>
       </Link>
     </div>
