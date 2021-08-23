@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import { LoginContext } from "./Contexts/LoginContext";
 import { CompanyContext } from "./Contexts/CompanyContext";
-import CompanyInfo from "./CompanyInfo";
 import { Companyform } from "./Companyform";
 import { Layout } from "antd";
 import debugFactory from "debug";
@@ -14,6 +13,7 @@ import useCompany from "./useCompany";
 import Signup from "./Signup";
 import useProduct from "./useProduct";
 import UpdateCompany from "./UpdateCompany";
+import Productinfo from "./Productinfo";
 
 const { Header, Footer } = Layout;
 const Container = styled.div`
@@ -71,7 +71,7 @@ const App = () => {
               ></Route>
               <Route
                 path="/Mainpage/company/:companyId"
-                component={CompanyInfo}
+                component={Productinfo}
               ></Route>
               <Route path="/login">login</Route>
               <Route path="/signup">

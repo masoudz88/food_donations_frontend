@@ -33,7 +33,7 @@
   height: 4.5rem;
 }
 .list {
-  width: 50%;
+  width: 80%;
   margin-bottom: 3%;
 }
 .listItem {
@@ -83,4 +83,8 @@
 
 .menuItems{  
   float:right;
+}
+.productList{
+  margin-left: 3%;
+  width: 80%
 }
