@@ -60,7 +60,8 @@ const App = () => {
                 deleteProduct,
                 fetchProducts,
                 addProduct,
-                users, addUser
+                users,
+                addUser,
               }}
             >
               <Route path="/Mainpage" exact component={Mainpage}></Route>

@@ -32,7 +32,7 @@ const useUsers = () => {
     fetchUsers();
   }, [fetchUsers]);
 
-  return { users, addUser, fetchUsers };
+  return { users, addUser };
 };
 
 export default useUsers;

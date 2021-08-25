@@ -1,26 +1,34 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Form, Input, Button, Checkbox } from "antd";
 import { Layout } from "antd";
 import { Link } from "react-router-dom";
 import { CompanyContext } from "./Contexts/CompanyContext";
+import { LoginContext } from "./Contexts/LoginContext";
+import debugFactory from "debug";
 
 const Credential = (props) => {
   const { users } = useContext(CompanyContext);
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const { name, isLogged, setName } = useContext(LoginContext);
+  const debug = debugFactory("Credential");
+  debug({ users });
 
   const onUserNameInputChange = (event) => {
-    //const { value } = event.target;
-    //setUsername(value);
+    const { value } = event.target;
+    setUsername(value);
   };
   const onPasswordInputChange = (event) => {
-    //const { value } = event.target;
-    //setPassword(value);
+    const { value } = event.target;
+    setPassword(value);
   };
 
   const onSubmit = (e) => {
-    console.log(users);
+    // const foundUser = users.find(
+    //   (c) => c.name === username && c.password === password
+    // );
+    setName(username);
+    props.history.push("/Mainpage");
   };
 
   return (

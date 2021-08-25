@@ -1,4 +1,4 @@
-import { Divider, Button } from "antd";
+import { Divider, Button, Dropdown } from "antd";
 import CompanyCards from "./CompanyCards";
 import { useContext, useEffect } from "react";
 import { LoginContext } from "./Contexts/LoginContext";
@@ -6,7 +6,7 @@ import "./index.css";
 import { Link } from "react-router-dom";
 import debugFactory from "debug";
 import { Layout, Menu } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { UserOutlined, DownOutlined } from "@ant-design/icons";
 
 const debug = debugFactory("Mainpage");
 
@@ -15,13 +15,17 @@ const Mainpage = (props) => {
   const { Header } = Layout;
   debug(name);
   debug(isLogged);
-
-  useEffect(() => {
-    debug("Mainpage rendering.");
-    if (isLogged === false) {
-      props.history.push("/");
-    }
-  }, [isLogged, props.history]);
+  const menu = (
+    <Menu>
+      <Menu.Item key="0">
+        <Button>Profile</Button>
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item key="1">
+        <Button>Log Out</Button>
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
     <div className="mainpage">
@@ -34,10 +38,15 @@ const Mainpage = (props) => {
             defaultSelectedKeys={["2"]}
           >
             <Menu.Item key="1" icon={<UserOutlined />} title="Log In">
-              <Link to="Credential">
-                Current User: {!name && "No User"}
-                {name.toUpperCase()}
-              </Link>
+              <Dropdown overlay={menu} trigger={["click"]}>
+                <a
+                  className="ant-dropdown-link"
+                  onClick={(e) => e.preventDefault()}
+                >
+                  Current User: {!name && "No User"}
+                  {name.toUpperCase()} <DownOutlined />
+                </a>
+              </Dropdown>
             </Menu.Item>
           </Menu>
         </Header>
