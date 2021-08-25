@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { Input, Button, Layout } from "antd";
 import { Link, useParams } from "react-router-dom";
 import { CompanyContext } from "./Contexts/CompanyContext";
@@ -12,17 +12,17 @@ export const AddproductFrom = () => {
   const { companyName } = useParams();
   const [selectedCompany, setSelectedCompany] = useState(null);
 
-  const onChange = (event, companyID) => {
-    setValue({ name: event.target.value });
+  const onChange = (event) => {
+    setValue(event.target.value);
   };
 
   const onSubmit = (event) => {
-    addProduct(value, selectedCompany.name);
-  };
-  useEffect(() => {
+    alert(value + " added");
     const foundCompany = companies.find((c) => c.name === companyName);
     setSelectedCompany(foundCompany);
-  }, [companies, companyName, addProduct]);
+    addProduct(value, selectedCompany.id);
+  };
+ 
   return (
     <div className="companyform">
       <Content>
@@ -37,13 +37,7 @@ export const AddproductFrom = () => {
             onChange={onChange}
           />
 
-          <Button
-            htmlType="submit"
-            type="primary"
-            onClick={() => {
-              alert(value.name + " added");
-            }}
-          >
+          <Button htmlType="submit" type="primary">
             add
           </Button>
         </Form>

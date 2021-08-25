@@ -9,7 +9,7 @@ const Productinfo = (props) => {
     useContext(CompanyContext);
   const [selectedCompany, setSelectedCompany] = useState(null);
   const { companyId } = useParams();
-  
+  console.log(products);
 
   useEffect(() => {
     const foundCompany = companies.find((c) => c.name === companyId);

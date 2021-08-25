@@ -18,25 +18,25 @@ const useProduct = () => {
 
   const deleteProduct = useCallback(
     (companyId, productId) => {
-      fetch(`/api/products/" ${companyId}  / ${productId} `, {
+      fetch(`/api/products/ ${companyId}  / ${productId} `, {
         method: "DELETE",
       }).then((res) => {
         if (res.ok) {
-          fetchProducts();
+          fetchProducts(companyId);
         }
       });
     },
     [fetchProducts]
   );
   const addProduct = useCallback(
-    (value, companyId) => {
+    (name, companyId) => {
       fetch("/api/products/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({value,companyId}),
+        body: JSON.stringify({ name, companyId }),
       }).then((res) => {
         if (res.ok) {
-          fetchProducts();
+          fetchProducts(companyId);
         }
       });
     },

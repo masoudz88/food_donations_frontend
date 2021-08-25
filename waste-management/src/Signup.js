@@ -2,14 +2,10 @@ import { Input } from "antd";
 import { Button } from "antd";
 import { Layout, Form } from "antd";
 import { useState } from "react";
-import debugFactory from "debug";
-
-const debug = debugFactory("signup");
 
 const Signup = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  debug(username, password);
   const onUserNameInputChange = (event) => {
     const { value } = event.target;
     setUsername(value);
