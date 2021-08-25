@@ -10,7 +10,7 @@ const Credential = (props) => {
   const { users } = useContext(CompanyContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { name, isLogged, setName } = useContext(LoginContext);
+  const {  setName } = useContext(LoginContext);
   const debug = debugFactory("Credential");
   debug({ users });
 

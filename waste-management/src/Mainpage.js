@@ -1,6 +1,6 @@
 import { Divider, Button, Dropdown } from "antd";
 import CompanyCards from "./CompanyCards";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { LoginContext } from "./Contexts/LoginContext";
 import "./index.css";
 import { Link } from "react-router-dom";
@@ -37,13 +37,14 @@ const Mainpage = (props) => {
           >
             <Menu.Item key="1" icon={<UserOutlined />} title="Log In">
               <Dropdown overlay={menu} trigger={["click"]}>
-                <a
+                <Button
+                  type="link"
                   className="ant-dropdown-link"
                   onClick={(e) => e.preventDefault()}
                 >
                   Current User: {!name && "No User"}
                   {name.toUpperCase()} <DownOutlined />
-                </a>
+                </Button>
               </Dropdown>
             </Menu.Item>
           </Menu>
