@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { DeleteOutlined } from "@ant-design/icons";
 
 const Productinfo = (props) => {
-  const { companies, products, setProducts, fetchProducts, deleteProduct } =
+  const { companies, products, fetchProducts, deleteProduct } =
     useContext(CompanyContext);
   const [selectedCompany, setSelectedCompany] = useState(null);
   const { companyId } = useParams();
@@ -15,7 +15,7 @@ const Productinfo = (props) => {
     const foundCompany = companies.find((c) => c.name === companyId);
     setSelectedCompany(foundCompany);
     fetchProducts(foundCompany.id);
-  }, [companies, companyId, setProducts, fetchProducts]);
+  }, [companies, companyId, fetchProducts]);
 
   return (
     <div>

@@ -15,6 +15,7 @@ import useProduct from "./useProduct";
 import UpdateCompany from "./UpdateCompany";
 import Productinfo from "./Productinfo";
 import { AddproductFrom } from "./AddProductForm";
+import useUsers from "./useUsers";
 
 const { Header, Footer } = Layout;
 const Container = styled.div`
@@ -38,6 +39,7 @@ const App = () => {
 
   const { companies, deleteCompany, addCompany, updateCompany } = useCompany();
   const { products, deleteProduct, fetchProducts, addProduct } = useProduct();
+  const { users, addUser } = useUsers();
   return (
     <Router>
       <Header style={myStyle}>Waste Management System</Header>
@@ -58,6 +60,7 @@ const App = () => {
                 deleteProduct,
                 fetchProducts,
                 addProduct,
+                users, addUser
               }}
             >
               <Route path="/Mainpage" exact component={Mainpage}></Route>

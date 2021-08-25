@@ -1,9 +1,11 @@
 import { Input } from "antd";
 import { Button } from "antd";
 import { Layout, Form } from "antd";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CompanyContext } from "./Contexts/CompanyContext";
 
 const Signup = (props) => {
+  const {  addUser } = useContext(CompanyContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const onUserNameInputChange = (event) => {
@@ -17,22 +19,10 @@ const Signup = (props) => {
 
   const onSubmit = (e) => {
     alert("Submited!");
-    fetch("/api/users/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: username, password }),
-    }).then((res) => {
-      if (res.ok) {
-        fetch("/api/users/")
-          .then((res) => {
-            if (res.ok) {
-              return res.json();
-            }
-          })
-          .then((jsonResponse) => setUsername(jsonResponse));
+    addUser(username,password);
       }
-    });
-  };
+    
+  
 
   return (
     <div className="firstpage">
