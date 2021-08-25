@@ -17,12 +17,10 @@ const Mainpage = (props) => {
   debug(isLogged);
   const menu = (
     <Menu>
-      <Menu.Item key="0">
-        <Button>Profile</Button>
-      </Menu.Item>
+      <Menu.Item key="0">My Profile</Menu.Item>
       <Menu.Divider />
-      <Menu.Item key="1">
-        <Button>Log Out</Button>
+      <Menu.Item danger key="1">
+        Log Out
       </Menu.Item>
     </Menu>
   );
