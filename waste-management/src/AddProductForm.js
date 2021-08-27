@@ -10,7 +10,7 @@ export const AddproductFrom = () => {
   const { addProduct } = useContext(CompanyContext);
   const [value, setValue] = useState([]);
   const { companyName } = useParams();
-  const [selectedCompany, setSelectedCompany] = useState(null);
+  
 
   const onChange = (event) => {
     setValue(event.target.value);
@@ -19,10 +19,9 @@ export const AddproductFrom = () => {
   const onSubmit = (event) => {
     alert(value + " added");
     const foundCompany = companies.find((c) => c.name === companyName);
-    setSelectedCompany(foundCompany);
-    addProduct(value, selectedCompany.id);
+    addProduct(value, foundCompany.id);
   };
- 
+
   return (
     <div className="companyform">
       <Content>
