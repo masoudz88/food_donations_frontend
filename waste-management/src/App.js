@@ -37,7 +37,13 @@ const App = () => {
   const [isLogged, setIsLogged] = useState(false);
   const [name, setName] = useState("");
 
-  const { companies, deleteCompany, addCompany, updateCompany } = useCompany();
+  const {
+    companies,
+    deleteCompany,
+    addCompany,
+    updateCompany,
+    fetchCompaniesById,
+  } = useCompany();
   const { products, deleteProduct, fetchProducts, addProduct } = useProduct();
   const { users, addUser } = useUsers();
   return (
@@ -53,6 +59,7 @@ const App = () => {
             <CompanyContext.Provider
               value={{
                 companies,
+                fetchCompaniesById,
                 deleteCompany,
                 addCompany,
                 updateCompany,

@@ -13,6 +13,16 @@ const useCompany = () => {
       .then((jsonResponse) => setCompanies(jsonResponse));
   }, [setCompanies]);
 
+  const fetchCompaniesById = useCallback(
+    (companyId) => {
+      fetch("/api/companies/" + companyId).then((res) => {
+        if (res.ok) {
+          fetchCompanies();
+        }
+      });
+    },
+    [fetchCompanies]
+  );
   const deleteCompany = useCallback(
     (companyId) => {
       fetch("/api/companies/" + companyId, { method: "DELETE" }).then((res) => {
@@ -57,7 +67,7 @@ const useCompany = () => {
     fetchCompanies();
   }, [fetchCompanies]);
 
-  return { companies, deleteCompany, addCompany, updateCompany };
+  return { companies, deleteCompany, addCompany, updateCompany, fetchCompaniesById };
 };
 
 export default useCompany;
