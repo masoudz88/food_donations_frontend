@@ -56,7 +56,7 @@ const useUsers = () => {
     fetchUsers();
   }, [fetchUsers]);
 
-  return { users, addUser, loginUser, logoutUser };
+  return { addUser, loginUser, logoutUser };
 };
 
 export default useUsers;

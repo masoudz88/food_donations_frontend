@@ -45,7 +45,7 @@ const App = () => {
     fetchCompaniesById,
   } = useCompany();
   const { products, deleteProduct, fetchProducts, addProduct } = useProduct();
-  const { users, addUser, loginUser, logoutUser } = useUsers();
+  const { addUser, loginUser, logoutUser } = useUsers();
   return (
     <Router>
       <Header style={myStyle}>Waste Management System</Header>
@@ -67,7 +67,6 @@ const App = () => {
                 deleteProduct,
                 fetchProducts,
                 addProduct,
-                users,
                 addUser,
                 loginUser,
                 logoutUser,

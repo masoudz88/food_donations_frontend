@@ -6,10 +6,10 @@ import { LoginContext } from "./Contexts/LoginContext";
 import { CompanyContext } from "./Contexts/CompanyContext";
 
 const Credential = (props) => {
+  const { loginUser } = useContext(CompanyContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { setName } = useContext(LoginContext);
-  const { loginUser } = useContext(CompanyContext);
 
   const onUserNameInputChange = (event) => {
     const { value } = event.target;
@@ -20,10 +20,7 @@ const Credential = (props) => {
     setPassword(value);
   };
 
-  const onSubmit = (e) => {
-    // const foundUser = users.find(
-    //   (c) => c.name === username && c.password === password
-    // );
+  const onSubmit = (e) => {    
     setName(username);
     loginUser(username, password);
   };
