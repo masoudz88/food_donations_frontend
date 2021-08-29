@@ -2,6 +2,7 @@ import { Divider, Button, Dropdown } from "antd";
 import CompanyCards from "./CompanyCards";
 import { useContext } from "react";
 import { LoginContext } from "./Contexts/LoginContext";
+import { CompanyContext } from "./Contexts/CompanyContext";
 import "./index.css";
 import { Link } from "react-router-dom";
 import debugFactory from "debug";
@@ -12,14 +13,18 @@ const debug = debugFactory("Mainpage");
 
 const Mainpage = (props) => {
   const { name, isLogged } = useContext(LoginContext);
+  const { logoutUser } = useContext(CompanyContext);
   const { Header } = Layout;
   debug(name);
   debug(isLogged);
+  const onClick = () => {
+    logoutUser();
+  };
   const menu = (
     <Menu>
       <Menu.Item key="0">My Profile</Menu.Item>
       <Menu.Divider />
-      <Menu.Item danger key="1">
+      <Menu.Item onClick={onClick} danger key="1">
         Log Out
       </Menu.Item>
     </Menu>
