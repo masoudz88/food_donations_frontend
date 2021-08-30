@@ -20,7 +20,7 @@ const Credential = (props) => {
     setPassword(value);
   };
 
-  const onSubmit = (e) => {    
+  const onSubmit = (e) => {
     setName(username);
     loginUser(username, password);
   };
