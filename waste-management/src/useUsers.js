@@ -51,7 +51,7 @@ const useUsers = () => {
       headers: { "Content-Type": "application/json" },
     }).then((res) => {
       if (res.ok) {
-        <Redirect to={{ pathname: "/credential" }} />;
+        history.push("/credential");
       }
     });
   }, []);
