@@ -1,9 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
-import { useHistory, Redirect } from "react-router-dom";
 
 const useUsers = () => {
   const [users, setUsers] = useState([]);
-  const history = useHistory();
 
   const fetchUsers = useCallback(() => {
     fetch("/api/users/")
@@ -30,32 +28,30 @@ const useUsers = () => {
     [fetchUsers]
   );
 
-  const loginUser = useCallback(
-    (name, password, props) => {
-      fetch("/api/login/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, password }),
-      }).then((res) => {
-        if (res.ok) {
-          console.log(true);
-          props.history.push("/Mainpage");
-        }
-      });
-    },
-    []
-  );
+  const loginUser = useCallback((name, password, props) => {
+    fetch("/api/login/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, password }),
+    }).then((res) => {
+      if (res.ok) {
+        props.history.push("/Mainpage");
+      } else {
+        alert("user or pass is not correct");
+      }
+    });
+  }, []);
 
-  const logoutUser = useCallback(() => {
+  const logoutUser = useCallback((props) => {
     fetch("/api/logout/", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     }).then((res) => {
       if (res.ok) {
-        history.push("/credential");
+        props.history.push("/credential");
       }
     });
-  }, [history]);
+  }, []);
 
   useEffect(() => {
     fetchUsers();

@@ -12,13 +12,14 @@ import { UserOutlined, DownOutlined } from "@ant-design/icons";
 const debug = debugFactory("Mainpage");
 
 const Mainpage = (props) => {
-  const { name, isLogged } = useContext(LoginContext);
+  const { name, isLogged, setIsLogged } = useContext(LoginContext);
   const { logoutUser } = useContext(CompanyContext);
   const { Header } = Layout;
   debug(name);
   debug(isLogged);
   const onClick = () => {
-    logoutUser();
+    setIsLogged(false);
+    logoutUser(props);    
   };
   const menu = (
     <Menu>
