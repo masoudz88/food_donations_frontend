@@ -3,13 +3,11 @@ import { Form, Input, Button, Checkbox } from "antd";
 import { Layout } from "antd";
 import { Link } from "react-router-dom";
 import { LoginContext } from "./Contexts/LoginContext";
-import { CompanyContext } from "./Contexts/CompanyContext";
 
 const Credential = (props) => {
-  const { loginUser } = useContext(CompanyContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { setName } = useContext(LoginContext);
+  const { setName, loginUser } = useContext(LoginContext);
 
   const onUserNameInputChange = (event) => {
     const { value } = event.target;
@@ -22,7 +20,7 @@ const Credential = (props) => {
 
   const onSubmit = (e) => {
     setName(username);
-    loginUser(username, password);
+    loginUser(username, password, props);
   };
 
   return (

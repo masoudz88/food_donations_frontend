@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 
 const useUsers = () => {
   const [users, setUsers] = useState([]);
@@ -31,18 +31,19 @@ const useUsers = () => {
   );
 
   const loginUser = useCallback(
-    (name, password) => {
+    (name, password, props) => {
       fetch("/api/login/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, password }),
       }).then((res) => {
         if (res.ok) {
-          history.push("/mainpage");
+          console.log(true);
+          props.history.push("/Mainpage");
         }
       });
     },
-    [history]
+    []
   );
 
   const logoutUser = useCallback(() => {
@@ -54,7 +55,7 @@ const useUsers = () => {
         history.push("/credential");
       }
     });
-  }, []);
+  }, [history]);
 
   useEffect(() => {
     fetchUsers();

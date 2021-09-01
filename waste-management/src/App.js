@@ -52,7 +52,7 @@ const App = () => {
       <Container className="container">
         <Switch>
           <LoginContext.Provider
-            value={{ isLogged, setIsLogged, name, setName }}
+            value={{ isLogged, setIsLogged, name, setName, loginUser }}
           >
             <Route path="/credential" exact component={Credential}></Route>
             <Route path="/" exact component={Landingpage}></Route>
@@ -68,7 +68,6 @@ const App = () => {
                 fetchProducts,
                 addProduct,
                 addUser,
-                loginUser,
                 logoutUser,
               }}
             >
