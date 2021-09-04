@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 
-const useUsers = () => {
+const useUsers = ({ setName, setIsLogged }) => {
+  /*
   const [users, setUsers] = useState([]);
 
   const fetchUsers = useCallback(() => {
@@ -12,6 +13,7 @@ const useUsers = () => {
       })
       .then((jsonResponse) => setUsers(jsonResponse));
   }, [setUsers]);
+  */
 
   const addUser = useCallback(
     (name, password) => {
@@ -21,11 +23,11 @@ const useUsers = () => {
         body: JSON.stringify({ name, password }),
       }).then((res) => {
         if (res.ok) {
-          fetchUsers();
+          // fetchUsers();
         }
       });
     },
-    [fetchUsers]
+    []
   );
 
   const loginUser = useCallback((name, password, props) => {
@@ -35,27 +37,48 @@ const useUsers = () => {
       body: JSON.stringify({ name, password }),
     }).then((res) => {
       if (res.ok) {
-        props.history.push("/Mainpage");
+        res.json().then((data) => {
+          setName(data.name);
+          setIsLogged(true);
+          props.history.push("/Mainpage");
+        });
       } else {
         alert("user or pass is not correct");
       }
     });
-  }, []);
+  }, [setIsLogged, setName]);
 
   const logoutUser = useCallback((props) => {
     fetch("/api/logout/", {
       method: "GET",
-      headers: { "Content-Type": "application/json" },
     }).then((res) => {
       if (res.ok) {
+        setName(undefined);
+        setIsLogged(false);
         props.history.push("/credential");
       }
     });
-  }, []);
+  }, [setIsLogged, setName]);
+
+  const whoami = useCallback((props) => {
+    fetch("/api/whoami/", {
+      method: "GET",
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          setName(data.name);
+          setIsLogged(true);
+        });
+      } else {
+        setName(undefined);
+        setIsLogged(false);
+      }
+    });
+  }, [setIsLogged, setName]);
 
   useEffect(() => {
-    fetchUsers();
-  }, [fetchUsers]);
+    whoami();
+  }, [whoami]);
 
   return { addUser, loginUser, logoutUser };
 };

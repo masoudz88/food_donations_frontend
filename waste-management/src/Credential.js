@@ -7,7 +7,7 @@ import { LoginContext } from "./Contexts/LoginContext";
 const Credential = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { setName, loginUser, setIsLogged } = useContext(LoginContext);
+  const { loginUser } = useContext(LoginContext);
 
   const onUserNameInputChange = (event) => {
     const { value } = event.target;
@@ -19,10 +19,7 @@ const Credential = (props) => {
   };
 
   const onSubmit = (e) => {
-    setName(username);
     loginUser(username, password, props);
-    setIsLogged(true)
-
   };
 
   return (
