@@ -49,7 +49,7 @@ const Mainpage = (props) => {
                   onClick={(e) => e.preventDefault()}
                 >
                   Current User: {!name && "No User"}
-                  {name} <DownOutlined />
+                  {name?.toUpperCase()} <DownOutlined />
                 </Button>
               </Dropdown>
             </Menu.Item>

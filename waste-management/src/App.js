@@ -45,7 +45,9 @@ const App = () => {
     fetchCompaniesById,
   } = useCompany();
   const { products, deleteProduct, fetchProducts, addProduct } = useProduct();
-  const { addUser, loginUser, logoutUser,  whoAmI } = useUsers();
+  const { addUser, loginUser, logoutUser } = useUsers({
+    setName, setIsLogged
+  });
   return (
     <Router>
       <Header style={myStyle}>Waste Management System</Header>
@@ -104,7 +106,6 @@ const App = () => {
                 <Signup />
               </Route>
               <Route path="/logout">log out</Route>
-              <Route path="/whoami">who am I?</Route>
             </CompanyContext.Provider>
           </LoginContext.Provider>
         </Switch>

@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 
-const useUsers = () => {
+const useUsers = ({ setName, setIsLogged }) => {
+  /*
   const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
 
@@ -13,6 +14,7 @@ const useUsers = () => {
       })
       .then((jsonResponse) => setUsers(jsonResponse));
   }, [setUsers]);
+  */
 
   const fetchCurrentUsers = useCallback((name) => {
     fetch(`/api/users/${name}`)
@@ -32,11 +34,11 @@ const useUsers = () => {
         body: JSON.stringify({ name, password }),
       }).then((res) => {
         if (res.ok) {
-          fetchUsers();
+          // fetchUsers();
         }
       });
     },
-    [fetchUsers]
+    []
   );
 
   const loginUser = useCallback((name, password, props) => {
@@ -46,24 +48,44 @@ const useUsers = () => {
       body: JSON.stringify({ name, password }),
     }).then((res) => {
       if (res.ok) {
-        fetchCurrentUsers(name);
-        props.history.push("/Mainpage");
+        res.json().then((data) => {
+          setName(data.name);
+          setIsLogged(true);
+          props.history.push("/Mainpage");
+        });
       } else {
         alert("user or pass is not correct");
       }
     });
-  }, [fetchCurrentUsers]);
+  }, [setIsLogged, setName]);
 
   const logoutUser = useCallback((props) => {
     fetch("/api/logout/", {
       method: "GET",
-      headers: { "Content-Type": "application/json" },
     }).then((res) => {
       if (res.ok) {
-        props.history.push("/");
+        setName(undefined);
+        setIsLogged(false);
+        props.history.push("/credential");
       }
     });
-  }, []);
+  }, [setIsLogged, setName]);
+
+  const whoami = useCallback((props) => {
+    fetch("/api/whoami/", {
+      method: "GET",
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          setName(data.name);
+          setIsLogged(true);
+        });
+      } else {
+        setName(undefined);
+        setIsLogged(false);
+      }
+    });
+  }, [setIsLogged, setName]);
 
   const whoAmI = useCallback(
     (props) => {
@@ -79,9 +101,8 @@ const useUsers = () => {
   );
 
   useEffect(() => {
-    fetchUsers();
-    fetchCurrentUsers();
-  }, [fetchUsers, fetchCurrentUsers]);
+    whoami();
+  }, [whoami]);
 
   return { addUser, loginUser, logoutUser,  whoAmI };
 };
