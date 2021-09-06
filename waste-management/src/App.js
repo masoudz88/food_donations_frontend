@@ -45,14 +45,21 @@ const App = () => {
     fetchCompaniesById,
   } = useCompany();
   const { products, deleteProduct, fetchProducts, addProduct } = useProduct();
-  const { addUser, loginUser, logoutUser } = useUsers();
+  const { addUser, loginUser, logoutUser,  whoAmI } = useUsers();
   return (
     <Router>
       <Header style={myStyle}>Waste Management System</Header>
       <Container className="container">
         <Switch>
           <LoginContext.Provider
-            value={{ isLogged, setIsLogged, name, setName, loginUser }}
+            value={{
+              isLogged,
+              setIsLogged,
+              name,
+              setName,
+              loginUser,              
+              whoAmI,
+            }}
           >
             <Route path="/credential" exact component={Credential}></Route>
             <Route path="/" exact component={Landingpage}></Route>

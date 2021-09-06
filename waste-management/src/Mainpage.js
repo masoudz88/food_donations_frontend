@@ -12,14 +12,14 @@ import { UserOutlined, DownOutlined } from "@ant-design/icons";
 const debug = debugFactory("Mainpage");
 
 const Mainpage = (props) => {
-  const { name, isLogged, setIsLogged } = useContext(LoginContext);
+  const { name } = useContext(LoginContext);
   const { logoutUser } = useContext(CompanyContext);
   const { Header } = Layout;
   debug(name);
-  debug(isLogged);
+
+  //debug(currentUser);
   const onClick = () => {
-    setIsLogged(false);
-    logoutUser(props);    
+    logoutUser(props);
   };
   const menu = (
     <Menu>
@@ -49,7 +49,7 @@ const Mainpage = (props) => {
                   onClick={(e) => e.preventDefault()}
                 >
                   Current User: {!name && "No User"}
-                  {name.toUpperCase()} <DownOutlined />
+                  {name} <DownOutlined />
                 </Button>
               </Dropdown>
             </Menu.Item>
