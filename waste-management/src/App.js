@@ -72,6 +72,16 @@ const App = (props) => {
   });
   return (
     <Router>
+      <Container >
+      <LoginContext.Provider
+            value={{
+              isLogged,
+              setIsLogged,
+              name,
+              setName,
+              loginUser,
+            }}
+          >
       <Header className="mainheader" style={myStyle}>
         <Link to="/">
           <Button type="text" style={{ color: "white", textAlign: "left" }}>
@@ -98,7 +108,8 @@ const App = (props) => {
                   className="ant-dropdown-link"
                   onClick={(e) => e.preventDefault()}
                 >
-                  <Title style={{ color: "white" }} level={5}>                    
+                  <Title style={{ color: "white" }} level={5}>
+                    {!name && "No User"}
                     {name}
                   </Title>{" "}
                   <DownOutlined />
@@ -108,17 +119,9 @@ const App = (props) => {
           </Menu>
         )}
       </Header>
-      <Container className="container">
+      
         <Switch>
-          <LoginContext.Provider
-            value={{
-              isLogged,
-              setIsLogged,
-              name,
-              setName,
-              loginUser,
-            }}
-          >
+          
             <Route path="/credential" exact component={Credential}></Route>
             <Route path="/" exact component={Landingpage}></Route>
             <CompanyContext.Provider
@@ -163,8 +166,9 @@ const App = (props) => {
               </Route>
               <Route path="/profile">Complete you profile!</Route>
             </CompanyContext.Provider>
-          </LoginContext.Provider>
+          
         </Switch>
+        </LoginContext.Provider>
       </Container>
       <Footer className="footer">written by Masoud Zare</Footer>
     </Router>

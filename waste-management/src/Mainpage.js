@@ -14,25 +14,7 @@ const Mainpage = (props) => {
   const { Header } = Layout;
   debug(name);
 
-  //debug(currentUser);
-  // const onClick = () => {
-  //   logoutUser(props);
-  // };
-  // const profileClick = () => {
-  //   props.history.push("/profile");
-  // };
-
-  // const menu = (
-  //   <Menu>
-  //     <Menu.Item onClick={profileClick} key="0">
-  //       My Profile
-  //     </Menu.Item>
-  //     <Menu.Divider />
-  //     <Menu.Item onClick={onClick} danger key="1">
-  //       Log Out
-  //     </Menu.Item>
-  //   </Menu>
-  // );
+  
 
   return (
     <div className="mainpage">

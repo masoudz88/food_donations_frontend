@@ -1,4 +1,4 @@
-import { Button, Divider, List } from "antd";
+import { Button, Divider, List, Typography } from "antd";
 import React, { useState, useEffect, useContext } from "react";
 import { CompanyContext } from "./Contexts/CompanyContext";
 import { Link, useParams } from "react-router-dom";
@@ -10,6 +10,7 @@ const Productinfo = (props) => {
   const [selectedCompany, setSelectedCompany] = useState(null);
   const { companyId } = useParams();
   console.log(products);
+  const{Text}=Typography;
 
   useEffect(() => {
     const foundCompany = companies.find((c) => c.name === companyId);
@@ -36,7 +37,7 @@ const Productinfo = (props) => {
             dataSource={products}
             renderItem={(item) => (
               <List.Item className="listItem">
-                <Button type="link">{item.name}</Button>
+                <Text type="link">{item.name}</Text>
                 <Button
                   onClick={() => {
                     deleteProduct(selectedCompany.id, item.id);

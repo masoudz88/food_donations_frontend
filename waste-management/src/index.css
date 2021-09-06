@@ -36,8 +36,9 @@
   height: 4.5rem;
 }
 .list {
-  width: 80%;
-  margin-bottom: 3%;
+  width: 95%;
+  margin-bottom: 3%;  
+  
 }
 .listItem {
   float: center;
@@ -95,5 +96,5 @@
 }
 .productList{
   margin-left: 3%;
-  width: 80%
+  width: 95%;
 }

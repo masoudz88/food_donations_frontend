@@ -11,9 +11,8 @@ const CompanyCards = () => {
   debug(companies);
 
   return (
-    <div>
+    <div className="list">
       <List
-        className="list"
         header={<div>Company List</div>}
         bordered
         dataSource={companies}
