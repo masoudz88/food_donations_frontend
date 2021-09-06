@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Button } from "antd";
 import {
   UserOutlined,
   ExportOutlined,
@@ -28,14 +28,12 @@ const LandingNav = () => {
             <Menu.Item key="2" icon={<ExportOutlined />} title="Sign Up">
               <Link to="Signup">Sign Up</Link>
             </Menu.Item>
-            <Menu.Item key="3" icon={<ShoppingOutlined />} title="companyCard">
-              {name && (
-                <Menu.Item style={{ float: "right" }}>
-                  <Link to="Mainpage">Company Card</Link>
-                </Menu.Item>
-              )}
-            </Menu.Item>
           </Menu>
+          {name && (
+            <Button type="dashed" icon={<ShoppingOutlined />} className="companyCardButton" >
+              <Link to="Mainpage">Company Card</Link>
+            </Button>
+          )}
         </Header>
       </Layout>
     </div>

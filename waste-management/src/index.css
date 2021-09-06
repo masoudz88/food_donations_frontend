@@ -77,6 +77,7 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 .header{
+  
   background: rgba(255, 255, 255, 0.3);
   float:right;
 }
@@ -97,4 +98,9 @@
 .productList{
   margin-left: 3%;
   width: 95%;
+}
+
+.companyCardButton{
+  float: right;  
+  margin-top: 1rem;
 }
