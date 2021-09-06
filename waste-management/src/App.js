@@ -2,12 +2,18 @@ import Credential from "./Credential";
 import Landingpage from "./Landingpage";
 import Mainpage from "./Mainpage";
 import { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
 import styled from "styled-components";
 import { LoginContext } from "./Contexts/LoginContext";
 import { CompanyContext } from "./Contexts/CompanyContext";
 import { Companyform } from "./Companyform";
-import { Button, Layout, Menu, Dropdown } from "antd";
+import { Button, Layout, Menu, Dropdown, Typography } from "antd";
 import { UserOutlined, DownOutlined } from "@ant-design/icons";
 import debugFactory from "debug";
 import useCompany from "./useCompany";
@@ -19,6 +25,7 @@ import { AddproductFrom } from "./AddProductForm";
 import useUsers from "./useUsers";
 
 const { Header, Footer } = Layout;
+const { Title } = Typography;
 const Container = styled.div`
   float: center;
   align-items: center;
@@ -36,17 +43,11 @@ const App = (props) => {
   };
   const onClick = () => {
     logoutUser(props);
-    
-  };
-  const profileClick = () => {
-    props.history.push("/profile");
   };
 
   const menu = (
     <Menu>
-      <Menu.Item onClick={profileClick} key="0">
-        My Profile
-      </Menu.Item>
+      <Menu.Item key="0">My Profile</Menu.Item>
       <Menu.Divider />
       <Menu.Item onClick={onClick} danger key="1">
         Log Out
@@ -73,16 +74,11 @@ const App = (props) => {
     <Router>
       <Header className="mainheader" style={myStyle}>
         <Link to="/">
-          <Button
-            type="text"
-            style={{ color: "white", width: "80%", textAlign: "left" }}
-          >
+          <Button type="text" style={{ color: "white", textAlign: "left" }}>
             Waste Management System
           </Button>
         </Link>
-        {!isLogged && 
-        <Redirect to="/" />
-        }
+        {!isLogged && <Redirect to="/" />}
         {name && (
           <Menu
             className="menuItems"
@@ -102,8 +98,10 @@ const App = (props) => {
                   className="ant-dropdown-link"
                   onClick={(e) => e.preventDefault()}
                 >
-                  Current User: {!name && "No User"}
-                  {name?.toUpperCase()} <DownOutlined />
+                  <Title style={{ color: "white" }} level={5}>                    
+                    {name}
+                  </Title>{" "}
+                  <DownOutlined />
                 </Button>
               </Dropdown>
             </Menu.Item>
