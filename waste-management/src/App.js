@@ -2,12 +2,13 @@ import Credential from "./Credential";
 import Landingpage from "./Landingpage";
 import Mainpage from "./Mainpage";
 import { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import styled from "styled-components";
 import { LoginContext } from "./Contexts/LoginContext";
 import { CompanyContext } from "./Contexts/CompanyContext";
 import { Companyform } from "./Companyform";
-import { Layout } from "antd";
+import { Button, Layout, Menu, Dropdown } from "antd";
+import { UserOutlined, DownOutlined } from "@ant-design/icons";
 import debugFactory from "debug";
 import useCompany from "./useCompany";
 import Signup from "./Signup";
@@ -29,10 +30,29 @@ const Container = styled.div`
 const debug = debugFactory("app");
 debug("debugger");
 
-const App = () => {
+const App = (props) => {
   const myStyle = {
     color: "white",
   };
+  const onClick = () => {
+    logoutUser(props);
+    
+  };
+  const profileClick = () => {
+    props.history.push("/profile");
+  };
+
+  const menu = (
+    <Menu>
+      <Menu.Item onClick={profileClick} key="0">
+        My Profile
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item onClick={onClick} danger key="1">
+        Log Out
+      </Menu.Item>
+    </Menu>
+  );
 
   const [isLogged, setIsLogged] = useState(false);
   const [name, setName] = useState("");
@@ -46,11 +66,50 @@ const App = () => {
   } = useCompany();
   const { products, deleteProduct, fetchProducts, addProduct } = useProduct();
   const { addUser, loginUser, logoutUser } = useUsers({
-    setName, setIsLogged
+    setName,
+    setIsLogged,
   });
   return (
     <Router>
-      <Header style={myStyle}>Waste Management System</Header>
+      <Header className="mainheader" style={myStyle}>
+        <Link to="/">
+          <Button
+            type="text"
+            style={{ color: "white", width: "80%", textAlign: "left" }}
+          >
+            Waste Management System
+          </Button>
+        </Link>
+        {!isLogged && 
+        <Redirect to="/" />
+        }
+        {name && (
+          <Menu
+            className="menuItems"
+            mode="horizontal"
+            defaultSelectedKeys={["2"]}
+          >
+            <Menu.Item
+              style={{ color: "white" }}
+              key="1"
+              icon={<UserOutlined />}
+              title="Log In"
+            >
+              <Dropdown overlay={menu} trigger={["click"]}>
+                <Button
+                  style={{ color: "white" }}
+                  type="link"
+                  className="ant-dropdown-link"
+                  onClick={(e) => e.preventDefault()}
+                >
+                  Current User: {!name && "No User"}
+                  {name?.toUpperCase()} <DownOutlined />
+                </Button>
+              </Dropdown>
+            </Menu.Item>
+          </Menu>
+        )}
+      </Header>
       <Container className="container">
         <Switch>
           <LoginContext.Provider
@@ -59,8 +118,7 @@ const App = () => {
               setIsLogged,
               name,
               setName,
-              loginUser,              
-              whoAmI,
+              loginUser,
             }}
           >
             <Route path="/credential" exact component={Credential}></Route>
@@ -105,7 +163,7 @@ const App = () => {
               <Route path="/signup">
                 <Signup />
               </Route>
-              <Route path="/logout">log out</Route>
+              <Route path="/profile">Complete you profile!</Route>
             </CompanyContext.Provider>
           </LoginContext.Provider>
         </Switch>

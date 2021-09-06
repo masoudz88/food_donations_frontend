@@ -1,4 +1,7 @@
 
+.mainheader{
+  background-color: rgb(28, 28, 94);
+}
 .firstpage {  
   display: flex;    
   justify-content: center;
@@ -83,6 +86,12 @@
 
 .menuItems{  
   float:right;
+  background-color: rgb(28, 28, 94);
+}
+.navmenuItems{  
+  float:right;
+  position: absolute;
+  
 }
 .productList{
   margin-left: 3%;
