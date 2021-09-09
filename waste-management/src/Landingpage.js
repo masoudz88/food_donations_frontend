@@ -9,7 +9,7 @@ const Landingpage = () => {
         className="landingpage"
         style={{
           background: `url('${process.env.PUBLIC_URL}/logos/donations.jpg')`,
-          height: "60vh",
+          height: "65vh",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}

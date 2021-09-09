@@ -1,20 +1,7 @@
 import { useCallback, useEffect } from "react";
 
 const useUsers = ({ setName, setIsLogged }) => {
-  /*
-  const [users, setUsers] = useState([]);
-  const [currentUser, setCurrentUser] = useState([]);
 
-  const fetchUsers = useCallback(() => {
-    fetch("/api/users/")
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
-      .then((jsonResponse) => setUsers(jsonResponse));
-  }, [setUsers]);
-  */
 
   const addUser = useCallback((name, password) => {
     fetch("/api/signup/", {
@@ -42,7 +29,7 @@ const useUsers = ({ setName, setIsLogged }) => {
             props.history.push("/Mainpage");
           });
         } else {
-          alert("user or pass is not correct");
+          alert("Incorrect Username or Password");
         }
       });
     },
