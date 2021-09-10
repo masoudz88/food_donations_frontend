@@ -6,7 +6,7 @@
 * All the data are stored in backend database
 ## [food_donations_backendend](https://github.com/masoudz88/food_donations_backend)
 * It uses Node.js and Express.js to communicate with frontend!
-# Running the App
+# Running the Application
 * Ensure you are using a modern node version
 ## Front end
 * cd /waste-management-system
