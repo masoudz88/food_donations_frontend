@@ -9,11 +9,11 @@
 # Running the App
 * Ensure you are using a modern node version
 ## Front end
-cd /waste-management-system
-npm install
-npm start
+* cd /waste-management-system
+* npm install
+* npm start
 ## Back end
-npm install
-node src/app.js
+* npm install
+* node src/app.js
 
 
