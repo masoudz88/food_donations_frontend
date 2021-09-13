@@ -4,7 +4,7 @@
 * The admin can log in if it has an account, then there is a list of companies that can be added or removed by the __admin__.
 * I have used context to manage the list of companies and how to add and remove companies
 * All the data are stored in backend database
-## [food_donations_backendend](https://github.com/masoudz88/food_donations_backend)
+## [food_donations_backend](https://github.com/masoudz88/food_donations_backend)
 * It uses Node.js and Express.js to communicate with frontend!
 # Running the Application
 * Ensure you are using a modern node version
@@ -15,5 +15,5 @@
 ## Back end
 * npm install
 * node src/app.js
-Open up http://localhost:3000/, the app should now be running!
+* Open up http://localhost:3000/, the app should now be running!
 
