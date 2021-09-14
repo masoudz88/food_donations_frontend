@@ -67,7 +67,13 @@ const useCompany = () => {
     fetchCompanies();
   }, [fetchCompanies]);
 
-  return { companies, deleteCompany, addCompany, updateCompany, fetchCompaniesById };
+  return {
+    companies,
+    deleteCompany,
+    addCompany,
+    updateCompany,
+    fetchCompaniesById,
+  };
 };
 
 export default useCompany;

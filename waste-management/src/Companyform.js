@@ -9,7 +9,7 @@ export const Companyform = () => {
   const { addCompany } = useContext(CompanyContext);
   const [value, setValue] = useState([]);
 
-  const onChange = (event, companyID) => {
+  const onChange = (event) => {
     setValue({ name: event.target.value });
   };
 

@@ -70,58 +70,58 @@ const App = (props) => {
     setName,
     setIsLogged,
   });
+  
   return (
     <Router>
-      <Container >
-      <LoginContext.Provider
-            value={{
-              isLogged,
-              setIsLogged,
-              name,
-              setName,
-              loginUser,
-            }}
-          >
-      <Header className="mainheader" style={myStyle}>
-        <Link to="/">
-          <Button type="text" style={{ color: "white", textAlign: "left" }}>
-            Waste Management System
-          </Button>
-        </Link>
-        {!isLogged && <Redirect to="/" />}
-        {name && (
-          <Menu
-            className="menuItems"
-            mode="horizontal"
-            defaultSelectedKeys={["2"]}
-          >
-            <Menu.Item
-              style={{ color: "white" }}
-              key="1"
-              icon={<UserOutlined />}
-              title="Log In"
-            >
-              <Dropdown overlay={menu} trigger={["click"]}>
-                <Button
+      <Container>
+        <LoginContext.Provider
+          value={{
+            isLogged,
+            setIsLogged,
+            name,
+            setName,
+            loginUser,
+          }}
+        >
+          <Header className="mainheader" style={myStyle}>
+            <Link to="/">
+              <Button type="text" style={{ color: "white", textAlign: "left" }}>
+                Waste Management System
+              </Button>
+            </Link>
+            {!isLogged && <Redirect to="/" />}
+            {name && (
+              <Menu
+                className="menuItems"
+                mode="horizontal"
+                defaultSelectedKeys={["2"]}
+              >
+                <Menu.Item
                   style={{ color: "white" }}
-                  type="link"
-                  className="ant-dropdown-link"
-                  onClick={(e) => e.preventDefault()}
+                  key="1"
+                  icon={<UserOutlined />}
+                  title="Log In"
                 >
-                  <Title style={{ color: "white" }} level={5}>
-                    {!name && "No User"}
-                    {name}
-                  </Title>{" "}
-                  <DownOutlined />
-                </Button>
-              </Dropdown>
-            </Menu.Item>
-          </Menu>
-        )}
-      </Header>
-      
-        <Switch>
-          
+                  <Dropdown overlay={menu} trigger={["click"]}>
+                    <Button
+                      style={{ color: "white" }}
+                      type="link"
+                      className="ant-dropdown-link"
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      <Title style={{ color: "white" }} level={5}>
+                        {!name && "No User"}
+                        {name}
+                      </Title>{" "}
+                      <DownOutlined />
+                    </Button>
+                  </Dropdown>
+                </Menu.Item>
+              </Menu>
+            )}
+          </Header>
+
+          <Switch>
             <Route path="/credential" exact component={Credential}></Route>
             <Route path="/" exact component={Landingpage}></Route>
             <CompanyContext.Provider
@@ -166,8 +166,7 @@ const App = (props) => {
               </Route>
               <Route path="/profile">Complete you profile!</Route>
             </CompanyContext.Provider>
-          
-        </Switch>
+          </Switch>
         </LoginContext.Provider>
       </Container>
       <Footer className="footer">written by Masoud Zare</Footer>

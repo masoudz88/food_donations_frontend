@@ -10,7 +10,6 @@ export const AddproductFrom = () => {
   const { addProduct } = useContext(CompanyContext);
   const [value, setValue] = useState([]);
   const { companyName } = useParams();
-  
 
   const onChange = (event) => {
     setValue(event.target.value);

@@ -30,8 +30,12 @@ const LandingNav = () => {
             </Menu.Item>
           </Menu>
           {name && (
-            <Button type="dashed" icon={<ShoppingOutlined />} className="companyCardButton" >
-              <Link to="Mainpage">Company Card</Link>
+            <Button
+              type="dashed"
+              icon={<ShoppingOutlined />}
+              className="companyCardButton"
+            >
+              <Link to="Mainpage">Companies</Link>
             </Button>
           )}
         </Header>
