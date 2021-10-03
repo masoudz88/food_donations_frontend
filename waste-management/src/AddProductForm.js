@@ -5,7 +5,7 @@ import { CompanyContext } from "./Contexts/CompanyContext";
 import Form from "antd/lib/form/Form";
 
 const { Content } = Layout;
-export const AddproductFrom = () => {
+export const AddproductFrom = (props) => {
   const { companies } = useContext(CompanyContext);
   const { addProduct } = useContext(CompanyContext);
   const [value, setValue] = useState([]);
@@ -16,9 +16,10 @@ export const AddproductFrom = () => {
   };
 
   const onSubmit = (event) => {
-    alert(value + " added");
+    alert(value + " added ");
     const foundCompany = companies.find((c) => c.name === companyName);
     addProduct(value, foundCompany.id);
+    props.history.push(`/Mainpage/company/${companyName}`);
   };
 
   return (

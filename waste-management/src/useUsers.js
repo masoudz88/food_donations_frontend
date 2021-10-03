@@ -9,8 +9,7 @@ const useUsers = ({ setName, setIsLogged }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, password }),
     }).then((res) => {
-      if (res.ok) {
-        // fetchUsers();
+      if (res.ok) {        
       }
     });
   }, []);
