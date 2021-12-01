@@ -41,13 +41,18 @@ const App = (props) => {
   const myStyle = {
     color: "white",
   };
+  const onProfileClick = () => {
+    debug("my profile clicked");
+  };
   const onClick = () => {
     logoutUser(props);
   };
 
   const menu = (
     <Menu>
-      <Menu.Item key="0">My Profile</Menu.Item>
+      <Menu.Item onClick={onProfileClick} key="0">
+        My Profile
+      </Menu.Item>
       <Menu.Divider />
       <Menu.Item onClick={onClick} danger key="1">
         Log Out
@@ -70,7 +75,7 @@ const App = (props) => {
     setName,
     setIsLogged,
   });
-  
+
   return (
     <Router>
       <Container>
@@ -164,7 +169,7 @@ const App = (props) => {
               <Route path="/signup">
                 <Signup />
               </Route>
-              <Route path="/profile">Complete you profile!</Route>
+              <Route path="/Mainpage/profile">Complete you profile!</Route>
             </CompanyContext.Provider>
           </Switch>
         </LoginContext.Provider>
